@@ -2,8 +2,8 @@
 
 取得Line代碼 (TOKEN) :
 ------
-- `https://github.com/ningxue520/linetoken`
-- `影片教學: https://www.youtube.com/watch?v=2gD4dELfVQo`
+- `https://github.com/austin0916/linetoken`
+- `Austin-民 請自取用`
 -
 如何製作Line半垢/半人機 :
 ------
@@ -17,18 +17,18 @@
 - `pip2 install gtts`
 - `pip2 install beautifulsoup`
 - `pip2 install googletrans`
-- `git clone https://github.com/ningxue520/ningxue`
-- `cd ningxue`
-- `python2 ningxue.py`
+- `git clone https://github.com/austin0916/austinline`
+- `cd austinline`
+- `python2 austin.py`
 
 如何再次啟動半垢 (主機重啟後) :
 ------
-- `cd ningxue`
-- `python2 ningxue.py`
+- `cd austinline`
+- `python2 austin.py`
 
-教學影片 :
+
 ------
-- `https://www.youtube.com/watch?v=2gD4dELfVQo`
-- `以上教學方法由Vipro提供，漢化版由凝雪製作`
-- `感謝LINE-TCR TEAM`
+
+- `以上半垢編碼由Vipro,凝雪提供
+
 
