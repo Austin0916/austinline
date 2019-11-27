@@ -1,11 +1,11 @@
-# Line半垢製作教學
+# 半垢製作
 
 取得Line代碼 (TOKEN) :
 
 - `https://github.com/austin0916/linetoken`
 -
 -
-如何製作Line半垢/半人機 :
+製作Line半垢:
 
 - `pkg update`
 - `pkg install git`
@@ -21,10 +21,7 @@
 - `cd austinline`
 - `python2 austin.py`
 
-如何再次啟動半垢 (主機重啟後) :
+再次啟動半垢 (主機重啟後) :
 
 - `cd austinline`
 - `python2 austin.py`
-
-
-
