@@ -1,8 +1,8 @@
 # 半垢製作
 
-- `取得Line代碼 (TOKEN) :
+-  取得Line代碼 (TOKEN) :
 -  https://github.com/austin0916/linetoken`
-- `製作Line半垢:
+-  製作Line半垢:
 - `pkg update`
 - `pkg install git`
 - `pkg install python2`
