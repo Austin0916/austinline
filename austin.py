@@ -14,7 +14,7 @@ austin = LINETCR.LINE()
 #austin.login(qr=True)
 austin.login(token='需要自己輸入，別把引號刪了')
 austin.loginResult()
-print "=====成功登入凝雪Line半垢====="
+print "=====登入成功=變身超級機器人====="
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -22,7 +22,7 @@ sys.setdefaultencoding('utf-8')
 
 selfMessage ="""
 ╔═══════════════
-║       ♓ 基本指令 ♓
+║       ✡基本指令✡
 ╠═══════════════
 ╠➩〘Hi〙
 ╠➩〘Me〙
@@ -49,14 +49,14 @@ selfMessage ="""
 ╠➩〘Micdel @〙
 ╠➩〘Miclist〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║       ✡ 超級機器人✡
+║
 ╚═══════════════
 """
 
 botMessage ="""
 ╔═══════════════
-║       ♓ 半垢機設定 ♓
+║       ✡半垢機設定✡
 ╠═══════════════
 ╠➩〘Absen〙
 ╠➩〘Respon〙
@@ -69,14 +69,14 @@ botMessage ="""
 ╠➩〘@bye〙
 ╠➩〘Bot on/off [半垢開/關]〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║        ✡超級機器人✡
+║
 ╚═══════════════
 """
 
 mediaMessage ="""
 ╔═══════════════
-║       ♓ 媒體指令 ♓
+║       ✡媒體指令✡
 ╠═══════════════
 ╠➩〘Gift〙
 ╠➩〘Giftbycontact〙
@@ -108,14 +108,14 @@ mediaMessage ="""
 ╠➩〘Id@th Text (Translate ID Ke TH〙
 ╠➩〘En@id Text (Translate En Ke ID〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║         ✡超級機器人✡
+║ 
 ╚═══════════════
 """
 
 groupMessage ="""
 ╔═══════════════
-║       ♓ 群組指令 ♓
+║       ✡群組指令✡
 ╠═══════════════
 ╠➩〘Welcome〙
 ╠➩〘Say welcome〙
@@ -143,15 +143,15 @@ groupMessage ="""
 ╠➩〘Getgroup image〙
 ╠➩〘Urlgroup Image〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║        ✡超級機器人✡
+║ 
 ╚═══════════════
 """
 vip="需要自己輸入，別把引號刪了"
 
 setMessage ="""
 ╔═══════════════
-║       ♓ 設定 ♓
+║       ✡設定✡
 ╠═══════════════
 ╠➩〘Notif on/off [通知開/關]〙
 ╠➩〘Mimic on/off [摹擬開/關]〙
@@ -162,14 +162,14 @@ setMessage ="""
 ╠➩〘Sticker on [貼圖傳送開/關]〙
 ╠➩〘Simisimi on/off [西米西米開/關]〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║        ✡超級機器人✡
+║
 ╚═══════════════
 """
 
 creatorMessage ="""
 ╔═══════════════
-║       ♓ 創作者指令 ♓
+║        ✡創作者指令✡
 ╠═══════════════
 ╠➩〘Crash〙
 ╠➩〘Kickall [翻群]〙
@@ -181,14 +181,14 @@ creatorMessage ="""
 ╠➩〘Bot restart [機器人重開]〙
 ╠➩〘Turn off [關機]〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║         ✡超級機器人✡
+║ 
 ╚═══════════════
 """
 
 adminMessage ="""
 ╔═══════════════
-║       ♓ 管理員指令 ♓
+║       ✡管理員指令✡
 ╠═══════════════
 ╠➩〘Allprotect on/off [防翻全開/關]〙
 ╠➩〘Ban〙
@@ -222,14 +222,14 @@ adminMessage ="""
 ╠➩〘Respon3 on/off〙
 ╠➩〘Responkick on/off〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║         ✡超級機器人✡
+║ 
 ╚═══════════════
 """
 
 helpMessage ="""
 ╔═══════════════
-║       ♓ 幫助指令 ♓
+║       ✡幫助指令✡
 ╠═══════════════
 ╠➩〘Help self [基本指令]〙
 ╠➩〘Help bot [半垢機設定]〙
@@ -243,8 +243,8 @@ helpMessage ="""
 ╠➩〘Speed test [速度測試]〙
 ╠➩〘Status [狀態]〙
 ╠═══════════════
-║         ღ 凝雪半垢 ღ
-║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
+║         ✡超級機器人✡
+║ 
 ╚═══════════════
 """
 
