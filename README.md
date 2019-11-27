@@ -1,7 +1,5 @@
 # 半垢製作
 
--  取得Line代碼 (TOKEN) :
--  https://github.com/austin0916/linetoken`
 -  製作Line半垢:
 - `pkg update`
 - `pkg install git`
@@ -19,3 +17,6 @@
 -  再次啟動半垢 (主機重啟後) :
 - `cd austinline`
 - `python2 austin.py`
+
+-  取得Line代碼 (TOKEN) :
+-  https://github.com/austin0916/linetoken`
