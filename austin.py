@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Ningxue Line Bot
+#austin Line Bot
 
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
@@ -10,10 +10,10 @@ from googletrans import Translator
 from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile
 
-ningxue = LINETCR.LINE()
-#ningxue.login(qr=True)
-ningxue.login(token='需要自己輸入，別把引號刪了')
-ningxue.loginResult()
+austin = LINETCR.LINE()
+#austin.login(qr=True)
+austin.login(token='需要自己輸入，別把引號刪了')
+austin.loginResult()
 print "=====成功登入凝雪Line半垢====="
 
 reload(sys)
@@ -249,19 +249,19 @@ helpMessage ="""
 """
 
 
-KAC=[ningxue]
-mid = ningxue.getProfile().mid
+KAC=[austin]
+mid = austin.getProfile().mid
 Bots=[mid]
 Creator=["需要自己輸入，別把引號刪了"]
 admin=["需要自己輸入，別把引號刪了"]
 
-contact = ningxue.getProfile()
-backup1 = ningxue.getProfile()
+contact = austin.getProfile()
+backup1 = austin.getProfile()
 backup1.displayName = contact.displayName
 backup1.statusMessage = contact.statusMessage                        
 backup1.pictureStatus = contact.pictureStatus
 
-responsename = ningxue.getProfile().displayName
+responsename = austin.getProfile().displayName
 
 
 wait = {
@@ -286,7 +286,7 @@ wait = {
     'sticker':False,  
     'timeline':True,
     "Timeline":True,
-    "comment":"Bot Auto Like By : ningxue",    
+    "comment":"Bot Auto Like By : austin",    
     "commentOn":True,
     "commentBlack":{},
     "message":"感謝你邀我進群組~",    
@@ -527,7 +527,7 @@ def summon(to, nama):
     msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+aa+']}','EMTVER':'4'}
     print "[Command] Tag All"
     try:
-       ningxue.sendMessage(msg)
+       austin.sendMessage(msg)
     except Exception as error:
        print error          
                         
@@ -546,11 +546,11 @@ def bot(op):
 
         if op.type == 5:
            if wait["autoAdd"] == True:
-              ningxue.findAndAddContactsByMid(op.param1)
+              austin.findAndAddContactsByMid(op.param1)
               if(wait["message"]in[""," ","\n",None]):
                 pass
               else:
-                ningxue.sendText(op.param1,str(wait["message"]))
+                austin.sendText(op.param1,str(wait["message"]))
 
 
         if op.type == 55:
@@ -580,7 +580,7 @@ def bot(op):
                 try:
                     if cctv['cyduk'][op.param1]==True:
                         if op.param1 in cctv['point']:
-                            Name = ningxue.getContact(op.param2).displayName
+                            Name = austin.getContact(op.param2).displayName
 #                            Name = summon(op.param2)
                             if Name in cctv['sidermem'][op.param1]:
                                 pass
@@ -589,15 +589,15 @@ def bot(op):
                                 if " " in Name:
                                     nick = Name.split(' ')
                                     if len(nick) == 2:
-                                        ningxue.sendText(op.param1, "嘿 " + "☞ " + Name + " ☜" + "\n偷看了聊天對話 ")
+                                        austin.sendText(op.param1, "嘿 " + "☞ " + Name + " ☜" + "\n偷看了聊天對話 ")
                                         time.sleep(0.2)
                                         summon(op.param1,[op.param2])
                                     else:
-                                        ningxue.sendText(op.param1, "嘿 " + "☞ " + Name + " ☜" + "\n是個已讀的路人 ")
+                                        austin.sendText(op.param1, "嘿 " + "☞ " + Name + " ☜" + "\n是個已讀的路人 ")
                                         time.sleep(0.2)
                                         summon(op.param1,[op.param2])
                                 else:
-                                    ningxue.sendText(op.param1, "嘿 " + "☞ " + Name + " ☜" + "\n你以爲我不知道你已讀喔??? ")
+                                    austin.sendText(op.param1, "嘿 " + "☞ " + Name + " ☜" + "\n你以爲我不知道你已讀喔??? ")
                                     time.sleep(0.2)
                                     summon(op.param1,[op.param2])
                         else:
@@ -612,49 +612,49 @@ def bot(op):
 	      
 
         if op.type == 22:
-            ningxue.leaveRoom(op.param1)
+            austin.leaveRoom(op.param1)
 
         if op.type == 21:
-            ningxue.leaveRoom(op.param1)
+            austin.leaveRoom(op.param1)
 
 
         if op.type == 13:
 	    print op.param3
             if op.param3 in mid:
 		if op.param2 in Creator:
-		    ningxue.acceptGroupInvitation(op.param1)
+		    austin.acceptGroupInvitation(op.param1)
 
 		    
 	    if mid in op.param3:	        
                 if wait["AutoJoinCancel"] == True:
-		    G = ningxue.getGroup(op.param1)
+		    G = austin.getGroup(op.param1)
                     if len(G.members) <= wait["memberscancel"]:
-                        ningxue.acceptGroupInvitation(op.param1)
-                        ningxue.sendText(op.param1,"遺憾 " + ningxue.getContact(op.param2).displayName + "\n少於30名成員... ")
-                        ningxue.leaveGroup(op.param1)                        
+                        austin.acceptGroupInvitation(op.param1)
+                        austin.sendText(op.param1,"遺憾 " + austin.getContact(op.param2).displayName + "\n少於30名成員... ")
+                        austin.leaveGroup(op.param1)                        
 		    else:
-                        ningxue.acceptGroupInvitation(op.param1)
-			ningxue.sendText(op.param1,"☆輸入 ☞Help☜ 查看指令 ^_^ ☆")
+                        austin.acceptGroupInvitation(op.param1)
+			austin.sendText(op.param1,"☆輸入 ☞Help☜ 查看指令 ^_^ ☆")
                         		    
  
 	    if mid in op.param3:
                 if wait["AutoJoin"] == True:
-		    G = ningxue.getGroup(op.param1)
+		    G = austin.getGroup(op.param1)
                     if len(G.members) <= wait["Members"]:
-                        ningxue.rejectGroupInvitation(op.param1)
+                        austin.rejectGroupInvitation(op.param1)
 		    else:
-                        ningxue.acceptGroupInvitation(op.param1)
-			ningxue.sendText(op.param1,"☆輸入 ☞Help☜ 查看指令 ^_^ ☆")
+                        austin.acceptGroupInvitation(op.param1)
+			austin.sendText(op.param1,"☆輸入 ☞Help☜ 查看指令 ^_^ ☆")
 	    else:
                 if wait["AutoCancel"] == True:
 		    if op.param3 in Bots:
 			pass
 		    else:
-                        ningxue.cancelGroupInvitation(op.param1, [op.param3])
+                        austin.cancelGroupInvitation(op.param1, [op.param3])
 		else:
 		    if op.param3 in wait["blacklist"]:
-			ningxue.cancelGroupInvitation(op.param1, [op.param3])
-			ningxue.sendText(op.param1, "黑名單被偵測")
+			austin.cancelGroupInvitation(op.param1, [op.param3])
+			austin.sendText(op.param1, "黑名單被偵測")
 		    else:
 			pass
 			
@@ -668,8 +668,8 @@ def bot(op):
                     pass
                 elif wait["inviteprotect"] == True:
                     wait ["blacklist"][op.param2] = True
-                    ningxue.cancelGroupInvitation(op.param1,[op.param3])
-                    ningxue.kickoutFromGroup(op.param1,[op.param2])
+                    austin.cancelGroupInvitation(op.param1,[op.param3])
+                    austin.kickoutFromGroup(op.param1,[op.param2])
                     if op.param2 not in Creator:
                      if op.param2 not in admin:
                       if op.param2 not in Bots:
@@ -690,21 +690,21 @@ def bot(op):
 		           if op.param2 in Bots:
 		               pass
 		           else:
-		               ningxue.kickoutFromGroup(op.param1,[op.param2])
+		               austin.kickoutFromGroup(op.param1,[op.param2])
 		               if op.param2 in wait["blacklist"]:
 		                   pass
 		        else:
-			    ningxue.inviteIntoGroup(op.param1,[op.param3])
+			    austin.inviteIntoGroup(op.param1,[op.param3])
 		    except:
 		        try:
 			    if op.param2 not in Creator:
 			        if op.param2 not in admin:
 			            if op.param2 not in Bots:
-                                        ningxue.kickoutFromGroup(op.param1,[op.param2])
+                                        austin.kickoutFromGroup(op.param1,[op.param2])
 			    if op.param2 in wait["blacklist"]:
 			        pass
 			    else:
-			        ningxue.inviteIntoGroup(op.param1,[op.param3])
+			        austin.inviteIntoGroup(op.param1,[op.param3])
 		        except:
 			    print ("他不存在於組中\ngid=["+op.param1+"]\nmid=["+op.param2+"]")
                         if op.param2 in wait["blacklist"]:
@@ -734,11 +734,11 @@ def bot(op):
                       if op.param2 in Bots:
                         pass
                     try:
-                        ningxue.kickoutFromGroup(op.param1,[op.param2])
-			ningxue.kickoutFromGroup(op.param1,[op.param2])
+                        austin.kickoutFromGroup(op.param1,[op.param2])
+			austin.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
-			    ningxue.kickoutFromGroup(op.param1,[op.param2])
+			    austin.kickoutFromGroup(op.param1,[op.param2])
                         except:
                             print ("他不存在於組中\ngid=["+op.param1+"]\nmid=["+op.param2+"]")
                         if op.param2 in wait["blacklist"]:
@@ -760,16 +760,16 @@ def bot(op):
                     if op.param2 in Bots:
                         pass
                     try:
-                        ningxue.kickoutFromGroup(op.param1,[op.param2])
-			ningxue.kickoutFromGroup(op.param1,[op.param2])
+                        austin.kickoutFromGroup(op.param1,[op.param2])
+			austin.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
 			    if op.param2 not in Bots:
-                                ningxue.kickoutFromGroup(op.param1,[op.param2])
+                                austin.kickoutFromGroup(op.param1,[op.param2])
 			    if op.param2 in wait["blacklist"]:
 			        pass
 			    else:
-			        ningxue.inviteIntoGroup(op.param1,[op.param3])
+			        austin.inviteIntoGroup(op.param1,[op.param3])
                         except:
                             print ("他不存在於組中\ngid=["+op.param1+"]\nmid=["+op.param2+"]")
                         if op.param2 in wait["blacklist"]:
@@ -778,7 +778,7 @@ def bot(op):
                             pass
                         else:
                             wait["blacklist"][op.param2] = True
-                    ningxue.inviteIntoGroup(op.param1,[op.param3])
+                    austin.inviteIntoGroup(op.param1,[op.param3])
                     if op.param2 in wait["blacklist"]:
                         pass
                     if op.param2 in wait["whitelist"]:
@@ -794,7 +794,7 @@ def bot(op):
 		  if op.param2 in Bots:
 		   pass		
 		else:
-                    ningxue.kickoutFromGroup(op.param1,[op.param2])
+                    austin.kickoutFromGroup(op.param1,[op.param2])
             else:
                 pass
 
@@ -803,33 +803,33 @@ def bot(op):
           if wait["Sambutan"] == True:
             if op.param2 in Creator:
                 return
-            ginfo = ningxue.getGroup(op.param1)
-            contact = ningxue.getContact(op.param2)
+            ginfo = austin.getGroup(op.param1)
+            contact = austin.getContact(op.param2)
             image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-            ningxue.sendText(op.param1,"安安 " + ningxue.getContact(op.param2).displayName + "\n歡迎閣下加入 ☞ " + str(ginfo.name) + " ☜" + "^_^")
+            austin.sendText(op.param1,"安安 " + austin.getContact(op.param2).displayName + "\n歡迎閣下加入 ☞ " + str(ginfo.name) + " ☜" + "^_^")
             c = Message(to=op.param1, from_=None, text=None, contentType=13)
             c.contentMetadata={'mid':op.param2}
-            ningxue.sendMessage(c)  
-            ningxue.sendImageWithURL(op.param1,image)
+            austin.sendMessage(c)  
+            austin.sendImageWithURL(op.param1,image)
             d = Message(to=op.param1, from_=None, text=None, contentType=7)
             d.contentMetadata={
                                     "STKID": "13269548",
                                     "STKPKGID": "1329191",
                                     "STKVER": "1" }                
-            ningxue.sendMessage(d)             
+            austin.sendMessage(d)             
             print "MEMBER JOIN TO GROUP"
 
         if op.type == 15:
           if wait["Sambutan"] == True:
             if op.param2 in Creator:
                 return
-            ningxue.sendText(op.param1,ningxue.getContact(op.param2).displayName +  "\n已退出群組")
+            austin.sendText(op.param1,austin.getContact(op.param2).displayName +  "\n已退出群組")
             d = Message(to=op.param1, from_=None, text=None, contentType=7)
             d.contentMetadata={
                                     "STKID": "13269542",
                                     "STKPKGID": "1329191",
                                     "STKVER": "1" }                
-            ningxue.sendMessage(d)                  
+            austin.sendMessage(d)                  
             print "MEMBER HAS LEFT THE GROUP"
             
         if op.type == 26:
@@ -838,7 +838,7 @@ def bot(op):
             if msg.from_ in mimic["target"] and mimic["status"] == True and mimic["target"][msg.from_] == True:
                     text = msg.text
                     if text is not None:
-                        ningxue.sendText(msg.to,text)             
+                        austin.sendText(msg.to,text)             
             
             
             if msg.to in settings["simiSimi"]:
@@ -850,11 +850,11 @@ def bot(op):
                         data = json.loads(data)
                         if data['status'] == 200:
                             if data['result']['result'] == 100:
-                                ningxue.sendText(msg.to,data['result']['response'].encode('utf-8'))
+                                austin.sendText(msg.to,data['result']['response'].encode('utf-8'))
 
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["kickMention"] == True:
-                     contact = ningxue.getContact(msg.from_)
+                     contact = austin.getContact(msg.from_)
                      cName = contact.displayName
                      balas = ["呵呵... " + cName + "\n慢走不送!!!"]
                      ret_ = random.choice(balas)                     
@@ -863,13 +863,13 @@ def bot(op):
                      mentionees = mention['MENTIONEES']
                      for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ningxue.sendText(msg.to,ret_)
-                                  ningxue.kickoutFromGroup(msg.to,[msg.from_])
+                                  austin.sendText(msg.to,ret_)
+                                  austin.kickoutFromGroup(msg.to,[msg.from_])
                                   break                              
                               
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["detectMention"] == True:
-                     contact = ningxue.getContact(msg.from_)
+                     contact = austin.getContact(msg.from_)
                      cName = contact.displayName
                      balas = ["不要標我!! 我很忙!!",cName + " 再標我不理你了!!"]
                      ret_ = random.choice(balas)
@@ -878,12 +878,12 @@ def bot(op):
                      mentionees = mention['MENTIONEES']
                      for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ningxue.sendText(msg.to,ret_)
+                                  austin.sendText(msg.to,ret_)
                                   break   
                               
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["detectMention2"] == True:          
-                    contact = ningxue.getContact(msg.from_)
+                    contact = austin.getContact(msg.from_)
                     cName = contact.displayName
                     balas = ["你還標我...",cName + " 再標我不理你了!!"]
                     ret_ = random.choice(balas)
@@ -892,19 +892,19 @@ def bot(op):
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ningxue.sendText(msg.to,ret_)
+                                  austin.sendText(msg.to,ret_)
                                   msg.contentType = 7   
                                   msg.text = None
                                   msg.contentMetadata = {
                                                        "STKID": "20001316",
                                                        "STKPKGID": "1582380",
                                                        "STKVER": "1" }
-                                  ningxue.sendMessage(msg)                                
+                                  austin.sendMessage(msg)                                
                                   break
                               
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["detectMention3"] == True:          
-                    contact = ningxue.getContact(msg.from_)
+                    contact = austin.getContact(msg.from_)
                     cName = contact.displayName
                     balas = ["呃 " + cName + ", 你很煩咧!"]
                     balas1 = "給我靜靜..."
@@ -915,16 +915,16 @@ def bot(op):
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ningxue.sendText(msg.to,ret_)
-                                  ningxue.sendText(msg.to,balas1)
-                                  ningxue.sendImageWithURL(msg.to,image)
+                                  austin.sendText(msg.to,ret_)
+                                  austin.sendText(msg.to,balas1)
+                                  austin.sendImageWithURL(msg.to,image)
                                   msg.contentType = 7   
                                   msg.text = None
                                   msg.contentMetadata = {
                                                        "STKID": "11764508",
                                                        "STKPKGID": "6641",
                                                        "STKVER": "1" }
-                                  ningxue.sendMessage(msg)                                
+                                  austin.sendMessage(msg)                                
                                   break  
                                   
         if op.type == 25:
@@ -932,7 +932,7 @@ def bot(op):
                               
             if msg.text in ["Bot on"]:
                 wait["Bot"] = True
-                ningxue.sendText(msg.to,"機器人已開啟")  
+                austin.sendText(msg.to,"機器人已開啟")  
 
         if op.type == 25:
           if wait["Bot"] == True:    
@@ -946,24 +946,24 @@ def bot(op):
                 stk_ver = msg.contentMetadata['STKVER']
                 pkg_id = msg.contentMetadata['STKPKGID']
                 filler = "『 Sticker Check 』\nSTKID : %s\nSTKPKGID : %s\nSTKVER : %s\n『 Link 』\nline://shop/detail/%s" % (stk_id,pkg_id,stk_ver,pkg_id)
-                ningxue.sendText(msg.to, filler)
+                austin.sendText(msg.to, filler)
                 wait["sticker"] = False
             else:
                 pass              
 
             if wait["alwaysRead"] == True:
                 if msg.toType == 0:
-                    ningxue.sendChatChecked(msg.from_,msg.id)
+                    austin.sendChatChecked(msg.from_,msg.id)
                 else:
-                    ningxue.sendChatChecked(msg.to,msg.id)
+                    austin.sendChatChecked(msg.to,msg.id)
                     
                     
             if msg.contentType == 16:
                 if wait['likeOn'] == True:
                      url = msg.contentMetadata["postEndUrl"]
-                     ningxue.like(url[25:58], url[66:], likeType=1005)
-                     ningxue.comment(url[25:58], url[66:], wait["comment"])
-                     ningxue.sendText(msg.to,"Like Success")                     
+                     austin.like(url[25:58], url[66:], likeType=1005)
+                     austin.comment(url[25:58], url[66:], wait["comment"])
+                     austin.sendText(msg.to,"Like Success")                     
                      wait['likeOn'] = False
 
 
@@ -971,51 +971,51 @@ def bot(op):
                 if wait["wblacklist"] == True:
 		    if msg.contentMetadata["mid"] not in admin:
                         if msg.contentMetadata["mid"] in wait["blacklist"]:
-                            ningxue.sendText(msg.to,"完成")
+                            austin.sendText(msg.to,"完成")
                             wait["wblacklist"] = False
                         else:
                             wait["blacklist"][msg.contentMetadata["mid"]] = True
                             wait["wblacklist"] = False
-                            ningxue.sendText(msg.to,"失敗")
+                            austin.sendText(msg.to,"失敗")
 		    else:
-			ningxue.sendText(msg.to,"Admin Detected~")
+			austin.sendText(msg.to,"Admin Detected~")
 			
 
                 elif wait["dblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
-                        ningxue.sendText(msg.to,"黑名單已清空")
+                        austin.sendText(msg.to,"黑名單已清空")
                         wait["dblacklist"] = False
 
                     else:
                         wait["dblacklist"] = False
-                        ningxue.sendText(msg.to,"沒有黑名單")
+                        austin.sendText(msg.to,"沒有黑名單")
             
                     
  
                 elif wait["Contact"] == True:
                      msg.contentType = 0
-                     ningxue.sendText(msg.to,msg.contentMetadata["mid"])
+                     austin.sendText(msg.to,msg.contentMetadata["mid"])
                      if 'displayName' in msg.contentMetadata:
-                         contact = ningxue.getContact(msg.contentMetadata["mid"])
+                         contact = austin.getContact(msg.contentMetadata["mid"])
                          try:
-                             cu = ningxue.channel.getCover(msg.contentMetadata["mid"])
+                             cu = austin.channel.getCover(msg.contentMetadata["mid"])
                          except:
                              cu = ""
-                         ningxue.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
+                         austin.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
                      else:
-                         contact = ningxue.getContact(msg.contentMetadata["mid"])
+                         contact = austin.getContact(msg.contentMetadata["mid"])
                          try:
-                             cu = ningxue.channel.getCover(msg.contentMetadata["mid"])
+                             cu = austin.channel.getCover(msg.contentMetadata["mid"])
                          except:
                              cu = ""
-                         ningxue.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
+                         austin.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
 
 
  
             elif msg.text == "Ginfo":
                 if msg.toType == 2:
-                    ginfo = ningxue.getGroup(msg.to)
+                    ginfo = austin.getGroup(msg.to)
                     try:
                         gCreator = ginfo.creator.displayName
                     except:
@@ -1029,14 +1029,14 @@ def bot(op):
                             u = "close"
                         else:
                             u = "open"
-                        ningxue.sendText(msg.to,"[Group name]\n" + str(ginfo.name) + "\n\n[Gid]\n" + msg.to + "\n\n[Group creator]\n" + gCreator + "\n\n[Profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\n\nMembers:" + str(len(ginfo.members)) + "members\nPending:" + sinvitee + "people\nURL:" + u + "it is inside")
+                        austin.sendText(msg.to,"[Group name]\n" + str(ginfo.name) + "\n\n[Gid]\n" + msg.to + "\n\n[Group creator]\n" + gCreator + "\n\n[Profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\n\nMembers:" + str(len(ginfo.members)) + "members\nPending:" + sinvitee + "people\nURL:" + u + "it is inside")
                     else:
-                        ningxue.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
+                        austin.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
                 else:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"不能在群組外使用")
+                        austin.sendText(msg.to,"不能在群組外使用")
                     else:
-                        ningxue.sendText(msg.to,"沒有於群組使用")
+                        austin.sendText(msg.to,"沒有於群組使用")
                         
 
  
@@ -1046,18 +1046,18 @@ def bot(op):
             elif msg.text in ["Creator","Owner"]:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': tjia}
-                ningxue.sendMessage(msg)
-		ningxue.sendText(msg.to,"他是原創者 (^_^)")
+                austin.sendMessage(msg)
+		austin.sendText(msg.to,"他是原創者 (^_^)")
 
  
 
 	    elif msg.text in ["Group creator","Gcreator","gcreator"]:
-		ginfo = ningxue.getGroup(msg.to)
+		ginfo = austin.getGroup(msg.to)
 		gCreator = ginfo.creator.mid
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': gCreator}
-                ningxue.sendMessage(msg)
-		ningxue.sendText(msg.to,"他是群主")
+                austin.sendMessage(msg)
+		austin.sendText(msg.to,"他是群主")
  
 
                 
@@ -1065,14 +1065,14 @@ def bot(op):
                 if wait["Timeline"] == True:
                     msg.contentType = 0
                     msg.text = "post URL\n" + msg.contentMetadata["postEndUrl"]
-                    ningxue.sendText(msg.to,msg.text)
+                    austin.sendText(msg.to,msg.text)
 
             
             if msg.contentType == 13:
                 if wait["steal"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = ningxue.getGroup(msg.to)
+                    groups = austin.getGroup(msg.to)
                     pending = groups.invitee
                     targets = []
                     for s in groups.members:
@@ -1086,16 +1086,16 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                ningxue.findAndAddContactsByMid(target)
-                                contact = ningxue.getContact(target)
-                                cu = ningxue.channel.getCover(target)
+                                austin.findAndAddContactsByMid(target)
+                                contact = austin.getContact(target)
+                                cu = austin.channel.getCover(target)
                                 path = str(cu)
                                 image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                                ningxue.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + msg.contentMetadata["mid"] + "\n\nBio :\n" + contact.statusMessage)
-                                ningxue.sendText(msg.to,"Profile Picture " + contact.displayName)
-                                ningxue.sendImageWithURL(msg.to,image)
-                                ningxue.sendText(msg.to,"Cover " + contact.displayName)
-                                ningxue.sendImageWithURL(msg.to,path)
+                                austin.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + msg.contentMetadata["mid"] + "\n\nBio :\n" + contact.statusMessage)
+                                austin.sendText(msg.to,"Profile Picture " + contact.displayName)
+                                austin.sendImageWithURL(msg.to,image)
+                                austin.sendText(msg.to,"Cover " + contact.displayName)
+                                austin.sendImageWithURL(msg.to,path)
                                 wait["steal"] = False
                                 break
                             except:
@@ -1106,7 +1106,7 @@ def bot(op):
                 if wait["gift"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = ningxue.getGroup(msg.to)
+                    groups = austin.getGroup(msg.to)
                     pending = groups.invitee
                     targets = []
                     for s in groups.members:
@@ -1120,7 +1120,7 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                ningxue.sendText(msg.to,"送你禮物!")
+                                austin.sendText(msg.to,"送你禮物!")
                                 msg.contentType = 9
                                 msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1128,7 +1128,7 @@ def bot(op):
                                                          'STKPKGID': '1296261'}
                                 msg.to = target
                                 msg.text = None
-                                ningxue.sendMessage(msg)
+                                austin.sendMessage(msg)
                                 wait['gift'] = False
                                 break
                             except:
@@ -1140,7 +1140,7 @@ def bot(op):
                 if wait["copy"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = ningxue.getGroup(msg.to)
+                    groups = austin.getGroup(msg.to)
                     targets = []
                     for s in groups.members:
                         if _name in s.displayName:
@@ -1149,13 +1149,13 @@ def bot(op):
                         else:
                             targets.append(copy)
                     if targets == []:
-                        ningxue.sendText(msg.to, "Not Found...")
+                        austin.sendText(msg.to, "Not Found...")
                         pass
                     else:
                         for target in targets:
                             try:
-                                ningxue.CloneContactProfile(target)
-                                ningxue.sendText(msg.to, "Copied (^_^)")
+                                austin.CloneContactProfile(target)
+                                austin.sendText(msg.to, "Copied (^_^)")
                                 wait['copy'] = False
                                 break
                             except:
@@ -1168,12 +1168,12 @@ def bot(op):
                 if wait['invite'] == True:
                      _name = msg.contentMetadata["displayName"]
                      invite = msg.contentMetadata["mid"]
-                     groups = ningxue.getGroup(msg.to)
+                     groups = austin.getGroup(msg.to)
                      pending = groups.invitee
                      targets = []
                      for s in groups.members:
                          if _name in s.displayName:
-                             ningxue.sendText(msg.to, _name + " 這搞砸了")
+                             austin.sendText(msg.to, _name + " 這搞砸了")
                          else:
                              targets.append(invite)
                      if targets == []:
@@ -1181,204 +1181,204 @@ def bot(op):
                      else:
                          for target in targets:
                              try:
-                                 ningxue.findAndAddContactsByMid(target)
-                                 ningxue.inviteIntoGroup(msg.to,[target])
-                                 ningxue.sendText(msg.to,"Invite " + _name)
+                                 austin.findAndAddContactsByMid(target)
+                                 austin.inviteIntoGroup(msg.to,[target])
+                                 austin.sendText(msg.to,"Invite " + _name)
                                  wait['invite'] = False
                                  break                              
                              except:             
-                                      ningxue.sendText(msg.to,"Limit Invite")
+                                      austin.sendText(msg.to,"Limit Invite")
                                       wait['invite'] = False
                                       break
                                   
  
             elif msg.text in ["Key creator","help creator","Help creator"]:
-                ningxue.sendText(msg.to,creatorMessage)
+                austin.sendText(msg.to,creatorMessage)
 
             elif msg.text in ["Key group","help group","Help group"]:
-                ningxue.sendText(msg.to,groupMessage)
+                austin.sendText(msg.to,groupMessage)
 
             elif msg.text in ["Key","help","Help"]:
-                ningxue.sendText(msg.to,helpMessage)
+                austin.sendText(msg.to,helpMessage)
 
             elif msg.text in ["Key self","help self","Help self"]:
-                ningxue.sendText(msg.to,selfMessage)
+                austin.sendText(msg.to,selfMessage)
 
             elif msg.text in ["Key bot","help bot","Help bot"]:
-                ningxue.sendText(msg.to,botMessage)
+                austin.sendText(msg.to,botMessage)
 
             elif msg.text in ["Key set","help set","Help set"]:
-                ningxue.sendText(msg.to,setMessage)
+                austin.sendText(msg.to,setMessage)
 
             elif msg.text in ["Key media","help media","Help media"]:
-                ningxue.sendText(msg.to,mediaMessage)
+                austin.sendText(msg.to,mediaMessage)
                 
             elif msg.text in ["Key admin","help admin","Help admin"]:
-                ningxue.sendText(msg.to,adminMessage)               
+                austin.sendText(msg.to,adminMessage)               
                 
 
  
             elif msg.text in ["List group"]:
-                    gid = ningxue.getGroupIdsJoined()
+                    gid = austin.getGroupIdsJoined()
                     h = ""
 		    jml = 0
                     for i in gid:
-		        gn = ningxue.getGroup(i).name
+		        gn = austin.getGroup(i).name
                         h += "♦【%s】\n" % (gn)
 		        jml += 1
-                    ningxue.sendText(msg.to,"=======[List Group]=======\n"+ h +"\nTotal Group: "+str(jml))
+                    austin.sendText(msg.to,"=======[List Group]=======\n"+ h +"\nTotal Group: "+str(jml))
  
 	    elif "Ban group: " in msg.text:
 		grp = msg.text.replace("Ban group: ","")
-		gid = ningxue.getGroupIdsJoined()
+		gid = austin.getGroupIdsJoined()
 		if msg.from_ in admin:
 		    for i in gid:
-		        h = ningxue.getGroup(i).name
+		        h = austin.getGroup(i).name
 			if h == grp:
 			    wait["BlGroup"][i]=True
-			    ningxue.sendText(msg.to, "成功禁止群組 : "+grp)
+			    austin.sendText(msg.to, "成功禁止群組 : "+grp)
 			else:
 			    pass
 		else:
-		    ningxue.sendText(msg.to, "只限管理員")
+		    austin.sendText(msg.to, "只限管理員")
  
             elif msg.text in ["List ban","List ban group"]:
 		if msg.from_ in admin:
                     if wait["BlGroup"] == {}:
-                        ningxue.sendText(msg.to,"ñ")
+                        austin.sendText(msg.to,"ñ")
                     else:
                         mc = ""
                         for gid in wait["BlGroup"]:
-                            mc += "-> " +ningxue.getGroup(gid).name + "\n"
-                        ningxue.sendText(msg.to,"===[Ban Group]===\n"+mc)
+                            mc += "-> " +austin.getGroup(gid).name + "\n"
+                        austin.sendText(msg.to,"===[Ban Group]===\n"+mc)
 		else:
-		    ningxue.sendText(msg.to, "只限管理員")
+		    austin.sendText(msg.to, "只限管理員")
  
 	    elif msg.text in ["Del ban: "]:
 		if msg.from_ in admin:
 		    ng = msg.text.replace("Del ban: ","")
 		    for gid in wait["BlGroup"]:
-		        if ningxue.getGroup(gid).name == ng:
+		        if austin.getGroup(gid).name == ng:
 			    del wait["BlGroup"][gid]
-			    ningxue.sendText(msg.to, "Success del ban "+ng)
+			    austin.sendText(msg.to, "Success del ban "+ng)
 		        else:
 			    pass
 		else:
-		    ningxue.sendText(msg.to, "只限管理員")
+		    austin.sendText(msg.to, "只限管理員")
  
             elif "Join group: " in msg.text:
 		ng = msg.text.replace("Join group: ","")
-		gid = ningxue.getGroupIdsJoined()
+		gid = austin.getGroupIdsJoined()
 		try:
 		    if msg.from_ in Creator:
                         for i in gid:
-                            h = ningxue.getGroup(i).name
+                            h = austin.getGroup(i).name
 		            if h == ng:
-		                ningxue.inviteIntoGroup(i,[Creator])
-			        ningxue.sendText(msg.to,"Success Join To ["+ h +"] Group")
+		                austin.inviteIntoGroup(i,[Creator])
+			        austin.sendText(msg.to,"Success Join To ["+ h +"] Group")
 			    else:
 			        pass
 		    else:
-		        ningxue.sendText(msg.to,"只限管理員")
+		        austin.sendText(msg.to,"只限管理員")
 		except Exception as e:
-		    ningxue.sendText(msg.to, str(e))
+		    austin.sendText(msg.to, str(e))
  
 	    elif "Leave group: " in msg.text:
 		ng = msg.text.replace("Leave group: ","")
-		gid = ningxue.getGroupIdsJoined()
+		gid = austin.getGroupIdsJoined()
 		if msg.from_ in Creator:
                     for i in gid:
-                        h = ningxue.getGroup(i).name
+                        h = austin.getGroup(i).name
 		        if h == ng:
-			    ningxue.sendText(i,"機器人已退出群組!")
-		            ningxue.leaveGroup(i)
-			    ningxue.sendText(msg.to,"Success Left ["+ h +"] group")
+			    austin.sendText(i,"機器人已退出群組!")
+		            austin.leaveGroup(i)
+			    austin.sendText(msg.to,"Success Left ["+ h +"] group")
 			else:
 			    pass
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
  
 	    elif "Leave all group" == msg.text:
-		gid = ningxue.getGroupIdsJoined()
+		gid = austin.getGroupIdsJoined()
                 if msg.from_ in Creator:
 		    for i in gid:
-			ningxue.sendText(i,"機器人已退出所有群組!")
-		        ningxue.leaveGroup(i)
-		    ningxue.sendText(msg.to,"機器人已成功退出所有群組!")
+			austin.sendText(i,"機器人已退出所有群組!")
+		        austin.leaveGroup(i)
+		    austin.sendText(msg.to,"機器人已成功退出所有群組!")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 		   
 
             elif "Pict group: " in msg.text:
                 saya = msg.text.replace('Pict group: ','')
-                gid = ningxue.getGroupIdsJoined()
+                gid = austin.getGroupIdsJoined()
                 for i in gid:
-                    h = ningxue.getGroup(i).name
-                    gna = ningxue.getGroup(i)
+                    h = austin.getGroup(i).name
+                    gna = austin.getGroup(i)
                     if h == saya:
-                        ningxue.sendImageWithURL(msg.to,"http://dl.profile.line.naver.jp/"+ gna.pictureStatus)		    
+                        austin.sendImageWithURL(msg.to,"http://dl.profile.line.naver.jp/"+ gna.pictureStatus)		    
 		    
  
             elif msg.text in ["cancelall","Cancelall"]:
                 if msg.toType == 2:
-                    X = ningxue.getGroup(msg.to)
+                    X = austin.getGroup(msg.to)
                     if X.invitee is not None:
                         gInviMids = [contact.mid for contact in X.invitee]
-                        ningxue.cancelGroupInvitation(msg.to, gInviMids)
+                        austin.cancelGroupInvitation(msg.to, gInviMids)
                     else:
-                        ningxue.sendText(msg.to,"沒有待定")
+                        austin.sendText(msg.to,"沒有待定")
                 else:
-                    ningxue.sendText(msg.to,"不能在群組外使用")
+                    austin.sendText(msg.to,"不能在群組外使用")
  
             elif msg.text in ["Ourl","Url on"]:
                 if msg.toType == 2:
-                    X = ningxue.getGroup(msg.to)
+                    X = austin.getGroup(msg.to)
                     X.preventJoinByTicket = False
-                    ningxue.updateGroup(X)
-                    ningxue.sendText(msg.to,"網址已開啟")
+                    austin.updateGroup(X)
+                    austin.sendText(msg.to,"網址已開啟")
                 else:
-                    ningxue.sendText(msg.to,"不能在群組外使用")
+                    austin.sendText(msg.to,"不能在群組外使用")
  
             elif msg.text in ["Curl","Url off"]:
                 if msg.toType == 2:
-                    X = ningxue.getGroup(msg.to)
+                    X = austin.getGroup(msg.to)
                     X.preventJoinByTicket = True
-                    ningxue.updateGroup(X)
-                    ningxue.sendText(msg.to,"網址已關閉")
+                    austin.updateGroup(X)
+                    austin.sendText(msg.to,"網址已關閉")
 
                 else:
-                    ningxue.sendText(msg.to,"不能在群組外使用")
+                    austin.sendText(msg.to,"不能在群組外使用")
  
             elif msg.text in ["Join on","Autojoin on"]:
 		if msg.from_ in admin:
                     wait["AutoJoin"] = True
                     wait["AutoJoinCancel"] = False
-                    ningxue.sendText(msg.to,"自動加入群組開啟")
+                    austin.sendText(msg.to,"自動加入群組開啟")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Join off","Autojoin off"]:
 		if msg.from_ in admin:
                     wait["AutoJoin"] = False
-                    ningxue.sendText(msg.to,"自動加入群組關閉")
+                    austin.sendText(msg.to,"自動加入群組關閉")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 		    
 		    
             elif msg.text in ["Joincancel on","Autojoincancel on"]:
 		if msg.from_ in admin:
                     wait["AutoJoinCancel"] = True
                     wait["AutoJoin"] = False
-                    ningxue.sendText(msg.to,"自動取消群組邀請開啟")
+                    austin.sendText(msg.to,"自動取消群組邀請開啟")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Joincancel off","Autojoincancel off"]:
 		if msg.from_ in admin:
                     wait["AutoJoinCancel"] = False
-                    ningxue.sendText(msg.to,"自動取消群組邀請關閉")
+                    austin.sendText(msg.to,"自動取消群組邀請關閉")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")		    
+		    austin.sendText(msg.to,"只限管理員")		    
 		    
  
             elif msg.text in ["Respon1 on"]:
@@ -1387,16 +1387,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    ningxue.sendText(msg.to,"自動回應1開啟")
+                    austin.sendText(msg.to,"自動回應1開啟")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Respon1 off"]:
 		if msg.from_ in admin:
                     wait["detectMention"] = False
-                    ningxue.sendText(msg.to,"自動回應1關閉")
+                    austin.sendText(msg.to,"自動回應1關閉")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")	
+		    austin.sendText(msg.to,"只限管理員")	
 		    
 		    
             elif msg.text in ["Respon2 on"]:
@@ -1405,15 +1405,15 @@ def bot(op):
                     wait["detectMention2"] = True
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    ningxue.sendText(msg.to,"自動回應2開啟")
+                    austin.sendText(msg.to,"自動回應2開啟")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
             elif msg.text in ["Respon2 off"]:
 		if msg.from_ in admin:
                     wait["detectMention2"] = False
-                    ningxue.sendText(msg.to,"自動回應2關閉")
+                    austin.sendText(msg.to,"自動回應2關閉")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")	
+		    austin.sendText(msg.to,"只限管理員")	
 		    
 
             elif msg.text in ["Respon3 on"]:
@@ -1422,16 +1422,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = True
                     wait["kickMention"] = False
-                    ningxue.sendText(msg.to,"自動回應3開啟")
+                    austin.sendText(msg.to,"自動回應3開啟")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Respon3 off"]:
 		if msg.from_ in admin:
                     wait["detectMention3"] = False
-                    ningxue.sendText(msg.to,"自動回應3關閉")
+                    austin.sendText(msg.to,"自動回應3關閉")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")	
+		    austin.sendText(msg.to,"只限管理員")	
 		    
  
             elif msg.text in ["Responkick on"]:
@@ -1440,80 +1440,80 @@ def bot(op):
                     wait["detectMention"] = False
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False                    
-                    ningxue.sendText(msg.to,"標記踢出開啟")
+                    austin.sendText(msg.to,"標記踢出開啟")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Responkick off"]:
 		if msg.from_ in admin:
                     wait["kickMention"] = False                    
-                    ningxue.sendText(msg.to,"標記踢出關閉")
+                    austin.sendText(msg.to,"標記踢出關閉")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")			  
+		    austin.sendText(msg.to,"只限管理員")			  
 		    
  
 	    elif msg.text in ["Autocancel on"]:
 	     if msg.from_ in admin:	        
                 wait["AutoCancel"] = True
-                ningxue.sendText(msg.to,"自動取消開啟")
+                austin.sendText(msg.to,"自動取消開啟")
 		print wait["AutoCancel"]
 	     else:
-		    ningxue.sendText(msg.to,"只限管理員")		
+		    austin.sendText(msg.to,"只限管理員")		
 
 	    elif msg.text in ["Autocancel off"]:
 	     if msg.from_ in admin:	        
                 wait["AutoCancel"] = False
-                ningxue.sendText(msg.to,"自動取消關閉")
+                austin.sendText(msg.to,"自動取消關閉")
 		print wait["AutoCancel"]
 	     else:
-		    ningxue.sendText(msg.to,"只限管理員")	
+		    austin.sendText(msg.to,"只限管理員")	
 		    
 
 	    elif msg.text in ["Invitepro on"]:
 	     if msg.from_ in admin:	        
                 wait["inviteprotect"] = True
-                ningxue.sendText(msg.to,"邀請保護開啟")
+                austin.sendText(msg.to,"邀請保護開啟")
 		print wait["inviteprotect"]
 	     else:
-		    ningxue.sendText(msg.to,"只限管理員")		
+		    austin.sendText(msg.to,"只限管理員")		
 
 	    elif msg.text in ["Invitepro off"]:
 	     if msg.from_ in admin:	        
                 wait["inviteprotect"] = False
-                ningxue.sendText(msg.to,"邀請保護關閉")
+                austin.sendText(msg.to,"邀請保護關閉")
 		print wait["inviteprotect"]
 	     else:
-		    ningxue.sendText(msg.to,"只限管理員")		    
+		    austin.sendText(msg.to,"只限管理員")		    
 
 	    elif "Qr on" in msg.text:
 	     if msg.from_ in admin:	        
 	        wait["Qr"] = True
-	    	ningxue.sendText(msg.to,"QR邀請保護開啟")
+	    	austin.sendText(msg.to,"QR邀請保護開啟")
 	     else:
-		    ningxue.sendText(msg.to,"只限管理員")	    	
+		    austin.sendText(msg.to,"只限管理員")	    	
 
 	    elif "Qr off" in msg.text:
 	     if msg.from_ in admin:	        
 	    	wait["Qr"] = False
-	    	ningxue.sendText(msg.to,"Qr邀請保護關閉")
+	    	austin.sendText(msg.to,"Qr邀請保護關閉")
 	     else:
-		    ningxue.sendText(msg.to,"只限管理員")	    	
+		    austin.sendText(msg.to,"只限管理員")	    	
 
                         
 
 	    elif "Autokick on" in msg.text:
 	     if msg.from_ in admin:	 	        
 		     wait["AutoKick"] = True
-		     ningxue.sendText(msg.to,"踢人保護開啟")
+		     austin.sendText(msg.to,"踢人保護開啟")
 	     else:
-	        ningxue.sendText(msg.to,"只限管理員")	     
+	        austin.sendText(msg.to,"只限管理員")	     
 
 	    elif "Autokick off" in msg.text:
 	     if msg.from_ in admin:	 	        
 		     wait["AutoKick"] = False
-		     ningxue.sendText(msg.to,"踢人保護關閉")
+		     austin.sendText(msg.to,"踢人保護關閉")
 	     else:
-	        ningxue.sendText(msg.to,"只限管理員")	     
+	        austin.sendText(msg.to,"只限管理員")	     
 
 
             elif msg.text in ["Allprotect on"]:
@@ -1522,9 +1522,9 @@ def bot(op):
                     wait["inviteprotect"] = True                   
                     wait["AutoKick"] = True
                     wait["Qr"] = True
-                    ningxue.sendText(msg.to,"防翻設定全開")
+                    austin.sendText(msg.to,"防翻設定全開")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Allprotect off"]:
 		if msg.from_ in admin:
@@ -1532,46 +1532,46 @@ def bot(op):
                     wait["inviteprotect"] = False                    
                     wait["AutoKick"] = False
                     wait["Qr"] = False
-                    ningxue.sendText(msg.to,"防翻設定全關")
+                    austin.sendText(msg.to,"防翻設定全關")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
 
             elif msg.text in ["K on","Contact on"]:
                 wait["Contact"] = True
-                ningxue.sendText(msg.to,"聯絡人開啓")
+                austin.sendText(msg.to,"聯絡人開啓")
 
             elif msg.text in ["K off","Contact off"]:
                 wait["Contact"] = False
-                ningxue.sendText(msg.to,"聯絡人關閉")
+                austin.sendText(msg.to,"聯絡人關閉")
                 
 
             elif msg.text in ["Alwaysread on"]:
                 wait["alwaysRead"] = True
-                ningxue.sendText(msg.to,"自動已讀開啟")
+                austin.sendText(msg.to,"自動已讀開啟")
 
             elif msg.text in ["Alwaysread off"]:
                 wait["alwaysRead"] = False
-                ningxue.sendText(msg.to,"自動已讀關閉")                
+                austin.sendText(msg.to,"自動已讀關閉")                
 
 
             elif msg.text in ["Notif on"]:
                 if wait["Sambutan"] == True:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"歡迎啟用ヾ(*´∀｀*)ﾉ")
+                        austin.sendText(msg.to,"歡迎啟用ヾ(*´∀｀*)ﾉ")
                 else:
                     wait["Sambutan"] = True
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"已經被開啟ヽ(´▽｀)/")
+                        austin.sendText(msg.to,"已經被開啟ヽ(´▽｀)/")
 
             elif msg.text in ["Notif off"]:
                 if wait["Sambutan"] == False:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"歡迎禁用(　＾∇＾)")
+                        austin.sendText(msg.to,"歡迎禁用(　＾∇＾)")
                 else:
                     wait["Sambutan"] = False
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"已經被禁用(p′︵‵。)")
+                        austin.sendText(msg.to,"已經被禁用(p′︵‵。)")
                         
                         
             elif "Sider on" in msg.text:
@@ -1585,15 +1585,15 @@ def bot(op):
                 cctv['sidermem'][msg.to] = ""
                 cctv['cyduk'][msg.to]=True
                 wait["Sider"] = True
-                ningxue.sendText(msg.to,"準備頁面審查")
+                austin.sendText(msg.to,"準備頁面審查")
                 
             elif "Sider off" in msg.text:
                 if msg.to in cctv['point']:
                     cctv['cyduk'][msg.to]=False
                     wait["Sider"] = False
-                    ningxue.sendText(msg.to, "取消頁面審查")
+                    austin.sendText(msg.to, "取消頁面審查")
                 else:
-                    ningxue.sendText(msg.to, "error")                         
+                    austin.sendText(msg.to, "error")                         
 
 
             elif msg.text in ["Status"]:
@@ -1628,7 +1628,7 @@ def bot(op):
 		else:md+="╠➩❌ Auto Sider: Off\n"	
 		if wait["Simi"] == True: md+="╠➩✔️ Simisimi : On\n"
 		else:md+="╠➩❌ Simisimi: Off\n"		
-                ningxue.sendText(msg.to,"╔═════════════════════════\n""║           ☆☞ S T A T U S ☜☆\n""╠═════════════════════════\n"+md+"╚═════════════════════════")
+                austin.sendText(msg.to,"╔═════════════════════════\n""║           ☆☞ S T A T U S ☜☆\n""╠═════════════════════════\n"+md+"╚═════════════════════════")
 
 
             elif msg.text in ["Gift","gift"]:
@@ -1637,7 +1637,7 @@ def bot(op):
                                     'PRDTYPE': 'THEME',
                                     'MSGTPL': '8'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
                 
                 
             elif "Gift1 " in msg.text:
@@ -1647,7 +1647,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1658,7 +1658,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1666,7 +1666,7 @@ def bot(op):
                                                          'STKPKGID': '1380280'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1677,7 +1677,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1688,7 +1688,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1696,7 +1696,7 @@ def bot(op):
                                                          'STKPKGID': '1360738'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1707,7 +1707,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1718,7 +1718,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1726,7 +1726,7 @@ def bot(op):
                                                          'STKPKGID': '1395389'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1737,7 +1737,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1748,7 +1748,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1756,7 +1756,7 @@ def bot(op):
                                                          'STKPKGID': '1329191'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1767,7 +1767,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1778,7 +1778,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1786,7 +1786,7 @@ def bot(op):
                                                          'STKPKGID': '9057'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1797,7 +1797,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1808,7 +1808,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1816,7 +1816,7 @@ def bot(op):
                                                          'STKPKGID': '9167'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1827,7 +1827,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1838,7 +1838,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1846,7 +1846,7 @@ def bot(op):
                                                          'STKPKGID': '7334'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1857,7 +1857,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1868,7 +1868,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1876,7 +1876,7 @@ def bot(op):
                                                          'STKPKGID': '1380280'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1887,7 +1887,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1898,7 +1898,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1906,7 +1906,7 @@ def bot(op):
                                                          'STKPKGID': '1405277'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1917,7 +1917,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = ningxue.getGroup(msg.to)
+                       gs = austin.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1928,7 +1928,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
+                                    austin.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1936,7 +1936,7 @@ def bot(op):
                                                          'STKPKGID': '1296261'}
                                     msg.to = target
                                     msg.text = None
-                                    ningxue.sendMessage(msg)
+                                    austin.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1947,7 +1947,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["hehehe","hehe"]:
                 msg.contentType = 7
@@ -1955,7 +1955,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["galau"]:
                 msg.contentType = 7
@@ -1963,7 +1963,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["you","kau","kamu"]:
                 msg.contentType = 7
@@ -1971,7 +1971,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["marah","hadeuh","hadeh"]:
                 msg.contentType = 7
@@ -1979,7 +1979,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["please","pliss","mohon","tolong"]:
                 msg.contentType = 7
@@ -1987,7 +1987,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["haa","haaa","kaget"]:
                 msg.contentType = 7
@@ -1995,7 +1995,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["lucu","ngakak","lol"]:
                 msg.contentType = 7
@@ -2003,7 +2003,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["hmm","hmmm"]:
                 msg.contentType = 7
@@ -2011,7 +2011,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["tidur"]:
                 msg.contentType = 7
@@ -2019,7 +2019,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["gemes"]:
                 msg.contentType = 7
@@ -2027,7 +2027,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["cantik","imut"]:
                 msg.contentType = 7
@@ -2035,7 +2035,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["nyanyi","lalala"]:
                 msg.contentType = 7
@@ -2043,7 +2043,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["gugup"]:
                 msg.contentType = 7
@@ -2051,7 +2051,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["ok","oke","okay","oce","okee","sip","siph"]:
                 msg.contentType = 7
@@ -2059,7 +2059,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["mantab","mantap","nice","keren"]:
                 msg.contentType = 7
@@ -2067,7 +2067,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["ngejek"]:
                 msg.contentType = 7
@@ -2075,7 +2075,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["nangis","sedih"]:
                 msg.contentType = 7
@@ -2083,7 +2083,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["woi","kampret"]:
                 msg.contentType = 7
@@ -2091,7 +2091,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif msg.text.lower() in ["huft"]:
                 msg.contentType = 7
@@ -2099,11 +2099,11 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
                 
 
             elif "tag all" == msg.text.lower():
-                 group = ningxue.getGroup(msg.to)
+                 group = austin.getGroup(msg.to)
                  nama = [contact.mid for contact in group.members]
                  nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
                  if jml <= 100:
@@ -2159,10 +2159,10 @@ def bot(op):
                  cnt = Message()
                  cnt.text = "Jumlah:\n" + str(jml) +  " Members"
                  cnt.to = msg.to
-                 ningxue.sendMessage(cnt)
+                 austin.sendMessage(cnt)
                  
             elif "tagall" == msg.text.lower():
-                 group = ningxue.getGroup(msg.to)
+                 group = austin.getGroup(msg.to)
                  nama = [contact.mid for contact in group.members]
                  nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
                  if jml <= 100:
@@ -2218,12 +2218,12 @@ def bot(op):
                  cnt = Message()
                  cnt.text = "Jumlah:\n" + str(jml) +  " Members"
                  cnt.to = msg.to
-                 ningxue.sendMessage(cnt)                 
+                 austin.sendMessage(cnt)                 
 
 
             elif msg.text in ["Setview","Setpoint","Cctv"]:
                 subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
-                ningxue.sendText(msg.to, "☆Checkpoint Checked☆")
+                austin.sendText(msg.to, "☆Checkpoint Checked☆")
                 print "Setview"
 
             elif msg.text in ["Viewseen","Check","Ciduk","Cyduk"]:
@@ -2249,7 +2249,7 @@ def bot(op):
                         except IndexError:
                             conName.append('nones')
                             pass
-                    contactId = ningxue.getContacts(recheckData)
+                    contactId = austin.getContacts(recheckData)
                     for v in range(len(recheckData)):
                         dataResult.append(contactId[v].displayName + ' ('+timeSeen[v]+')')
                         pass
@@ -2257,11 +2257,11 @@ def bot(op):
                         tukang = "╔═════════════════════════\n║         ☆☞ LIST VIEWERS ☜☆\n╠═════════════════════════\n╠➩"
                         grp = '\n╠➩ '.join(str(f) for f in dataResult)
                         total = '\n╠═════════════════════════\n╠➩ Total %i Viewers (%s)' % (len(dataResult), datetime.now().strftime('%H:%M:%S')) + "\n╚═════════════════════════"
-                        ningxue.sendText(msg.to, "%s %s %s" % (tukang, grp, total))
+                        austin.sendText(msg.to, "%s %s %s" % (tukang, grp, total))
                         subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
-                        ningxue.sendText(msg.to, "☆Auto Checkpoint☆")                        
+                        austin.sendText(msg.to, "☆Auto Checkpoint☆")                        
                     else:
-                        ningxue.sendText(msg.to, "☆Belum Ada Viewers☆")
+                        austin.sendText(msg.to, "☆Belum Ada Viewers☆")
                     print "Viewseen"
 
 
@@ -2273,168 +2273,168 @@ def bot(op):
 		        mentionees = mention['MENTIONEES']
 		        print mentionees
 		        for mention in mentionees:
-			    ningxue.kickoutFromGroup(msg.to,[mention['M']])
+			    austin.kickoutFromGroup(msg.to,[mention['M']])
 
 	    elif "Set member: " in msg.text:
 		if msg.from_ in admin:	 	        
 		    jml = msg.text.replace("Set member: ","")
 		    wait["Members"] = int(jml)
-		    ningxue.sendText(msg.to, "已設定最低成員數 : "+jml)
+		    austin.sendText(msg.to, "已設定最低成員數 : "+jml)
 
 	    elif "Add all" in msg.text:
-		    thisgroup = ningxue.getGroups([msg.to])
+		    thisgroup = austin.getGroups([msg.to])
 		    Mids = [contact.mid for contact in thisgroup[0].members]
 		    mi_d = Mids[:33]
-		    ningxue.findAndAddContactsByMids(mi_d)
-		    ningxue.sendText(msg.to,"成功邀請所有成員")
+		    austin.findAndAddContactsByMids(mi_d)
+		    austin.sendText(msg.to,"成功邀請所有成員")
 
 
             elif msg.text in ["Invite"]:
                 wait["invite"] = True
-                ningxue.sendText(msg.to,"請給友資")
+                austin.sendText(msg.to,"請給友資")
                 
                 
 
             elif msg.text in ["Auto like"]:
                 wait["likeOn"] = True
-                ningxue.sendText(msg.to,"自動貼文讚好")                
+                austin.sendText(msg.to,"自動貼文讚好")                
 
 
             elif msg.text in ["Steal contact"]:
                 wait["steal"] = True
-                ningxue.sendText(msg.to,"請給友資")
+                austin.sendText(msg.to,"請給友資")
                 
 
             elif msg.text in ["Giftbycontact"]:
                 wait["gift"] = True
-                ningxue.sendText(msg.to,"請給友資") 
+                austin.sendText(msg.to,"請給友資") 
                 
             elif msg.text in ["Copycontact"]:
                 wait["copy"] = True
-                ningxue.sendText(msg.to,"請給友資") 
+                austin.sendText(msg.to,"請給友資") 
                 
             elif msg.text in ["Sticker on"]:
                 wait["sticker"] = True
-                ningxue.sendText(msg.to,"貼紙ID檢測已經開啟")  
+                austin.sendText(msg.to,"貼紙ID檢測已經開啟")  
                 
             elif msg.text in ["Bot off"]:
                 wait["Bot"] = False
-                ningxue.sendText(msg.to,"機器人已被禁用")  
+                austin.sendText(msg.to,"機器人已被禁用")  
 
 	    elif "Recover" in msg.text:
-		thisgroup = ningxue.getGroups([msg.to])
+		thisgroup = austin.getGroups([msg.to])
 		Mids = [contact.mid for contact in thisgroup[0].members]
 		mi_d = Mids[:33]
-		ningxue.createGroup("Recover", mi_d)
-		ningxue.sendText(msg.to,"成功恢復")
+		austin.createGroup("Recover", mi_d)
+		austin.sendText(msg.to,"成功恢復")
 
 
 
             elif ("Gn: " in msg.text):
                 if msg.toType == 2:
-                    X = ningxue.getGroup(msg.to)
+                    X = austin.getGroup(msg.to)
                     X.name = msg.text.replace("Gn: ","")
-                    ningxue.updateGroup(X)
+                    austin.updateGroup(X)
                 else:
-                    ningxue.sendText(msg.to,"除了群組之外不能使用")
+                    austin.sendText(msg.to,"除了群組之外不能使用")
 
             elif "Kick: " in msg.text:
                 midd = msg.text.replace("Kick: ","")
 		if midd not in admin:
-		    ningxue.kickoutFromGroup(msg.to,[midd])
+		    austin.kickoutFromGroup(msg.to,[midd])
 		else:
-		    ningxue.sendText(msg.to,"管理員偵測")
+		    austin.sendText(msg.to,"管理員偵測")
 
             elif "Invite: " in msg.text:
                 midd = msg.text.replace("Invite: ","")
-                ningxue.findAndAddContactsByMid(midd)
-                ningxue.inviteIntoGroup(msg.to,[midd])
+                austin.findAndAddContactsByMid(midd)
+                austin.inviteIntoGroup(msg.to,[midd])
 
             elif "Invite creator" in msg.text:
                 midd = "uda936836a9869eb86ec8ab992a4e8979"
-                ningxue.inviteIntoGroup(msg.to,[midd])
+                austin.inviteIntoGroup(msg.to,[midd])
 
             elif msg.text in ["Welcome","welcome","Welkam","welkam","Wc","wc"]:
-                gs = ningxue.getGroup(msg.to)
-                ningxue.sendText(msg.to,"歡迎加入 "+ gs.name)
+                gs = austin.getGroup(msg.to)
+                austin.sendText(msg.to,"歡迎加入 "+ gs.name)
                 msg.contentType = 7
                 msg.contentMetadata={'STKID': '247',
                                     'STKPKGID': '3',
                                     'STKVER': '100'}
                 msg.text = None
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
 	    elif "Bc: " in msg.text:
 		bc = msg.text.replace("Bc: ","")
-		gid = ningxue.getGroupIdsJoined()
+		gid = austin.getGroupIdsJoined()
 		if msg.from_ in Creator:
 		    for i in gid:
-			ningxue.sendText(i,"=======[BROADCAST]=======\n\n"+bc+"\n\nContact Me : line.me/ti/p/~nad_nad.")
-		    ningxue.sendText(msg.to,"Success BC BosQ")
+			austin.sendText(i,"=======[BROADCAST]=======\n\n"+bc+"\n\nContact Me : line.me/ti/p/~nad_nad.")
+		    austin.sendText(msg.to,"Success BC BosQ")
 		else:
-		    ningxue.sendText(msg.to,"只限管理員")
+		    austin.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Cancel"]:
-                gid = ningxue.getGroupIdsInvited()
+                gid = austin.getGroupIdsInvited()
                 for i in gid:
-                    ningxue.rejectGroupInvitation(i)
-                ningxue.sendText(msg.to,"所有邀請都被拒絕了")
+                    austin.rejectGroupInvitation(i)
+                austin.sendText(msg.to,"所有邀請都被拒絕了")
 
             elif msg.text in ["Gurl"]:
                 if msg.toType == 2:
-                    x = ningxue.getGroup(msg.to)
+                    x = austin.getGroup(msg.to)
                     if x.preventJoinByTicket == True:
                         x.preventJoinByTicket = False
-                        ningxue.updateGroup(x)
-                    gurl = ningxue.reissueGroupTicket(msg.to)
-                    ningxue.sendText(msg.to,"line://ti/g/" + gurl)
+                        austin.updateGroup(x)
+                    gurl = austin.reissueGroupTicket(msg.to)
+                    austin.sendText(msg.to,"line://ti/g/" + gurl)
                 else:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"不能在群組外使用")
+                        austin.sendText(msg.to,"不能在群組外使用")
                     else:
-                        ningxue.sendText(msg.to,"沒有在群組内使用")
+                        austin.sendText(msg.to,"沒有在群組内使用")
 
 
             elif msg.text in ["timeline"]:
 		try:
-                    url = ningxue.activity(limit=5)
-		    ningxue.sendText(msg.to,url['result']['posts'][0]['postInfo']['postId'])
+                    url = austin.activity(limit=5)
+		    austin.sendText(msg.to,url['result']['posts'][0]['postInfo']['postId'])
 		except Exception as E:
 		    print E
 
             elif msg.text in ["@bye","@Bye"]:
-		    ningxue.leaveGroup(msg.to)		    
+		    austin.leaveGroup(msg.to)		    
 		    
 
             elif msg.text in ["Absen"]:
-		ningxue.sendText(msg.to,"Hadir!!")
+		austin.sendText(msg.to,"Hadir!!")
 
 
             elif msg.text.lower() in ["respon"]:
-                ningxue.sendText(msg.to,responsename)
+                austin.sendText(msg.to,responsename)
 
             elif msg.text in ["Sp","Speed","speed"]:
                 start = time.time()
                 print("Speed")                
                 elapsed_time = time.time() - start
-		ningxue.sendText(msg.to, "運行中...")
-                ningxue.sendText(msg.to, "%sseconds" % (elapsed_time))
+		austin.sendText(msg.to, "運行中...")
+                austin.sendText(msg.to, "%sseconds" % (elapsed_time))
                 
             elif msg.text in ["Speed test"]:
                 start = time.time()
-                ningxue.sendText(msg.to, "運行中...")
+                austin.sendText(msg.to, "運行中...")
                 elapsed_time = time.time() - start
-                ningxue.sendText(msg.to, "%sseconds" % (elapsed_time))                
+                austin.sendText(msg.to, "%sseconds" % (elapsed_time))                
  
             elif msg.text in ["Ban"]:
                 if msg.from_ in admin:
                     wait["wblacklist"] = True
-                    ningxue.sendText(msg.to,"請給友資")
+                    austin.sendText(msg.to,"請給友資")
 
             elif msg.text in ["Unban"]:
                 if msg.from_ in admin:
                     wait["dblacklist"] = True
-                    ningxue.sendText(msg.to,"請給友資")
+                    austin.sendText(msg.to,"請給友資")
  
             elif "Ban @" in msg.text:
                 if msg.from_ in admin:
@@ -2442,13 +2442,13 @@ def bot(op):
                     print "@Ban by mention"
                     _name = msg.text.replace("Ban @","")
                     _nametarget = _name.rstrip('  ')
-                    gs = ningxue.getGroup(msg.to)
+                    gs = austin.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        ningxue.sendText(msg.to,"Not found")
+                        austin.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
 			    if target not in admin:
@@ -2456,21 +2456,21 @@ def bot(op):
                                     wait["blacklist"][target] = True
                                     f=codecs.open('st2__b.json','w','utf-8')
                                     json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                    ningxue.sendText(msg.to,"Succes BosQ")
+                                    austin.sendText(msg.to,"Succes BosQ")
                                 except:
-                                    ningxue.sendText(msg.to,"Error")
+                                    austin.sendText(msg.to,"Error")
 			    else:
-				ningxue.sendText(msg.to,"管理員偵測")
+				austin.sendText(msg.to,"管理員偵測")
  
             elif msg.text in ["Banlist","Ban list"]:
               if msg.from_ in admin:
                 if wait["blacklist"] == {}:
-                    ningxue.sendText(msg.to,"ñ")
+                    austin.sendText(msg.to,"ñ")
                 else:
                     mc = ""
                     for mi_d in wait["blacklist"]:
-                        mc += "->" +ningxue.getContact(mi_d).displayName + "\n"
-                    ningxue.sendText(msg.to,"===[Blacklist User]===\n"+mc)
+                        mc += "->" +austin.getContact(mi_d).displayName + "\n"
+                    austin.sendText(msg.to,"===[Blacklist User]===\n"+mc)
 
  
             elif "Unban @" in msg.text:
@@ -2479,61 +2479,61 @@ def bot(op):
                 if msg.from_ in admin:
                     _name = msg.text.replace("Unban @","")
                     _nametarget = _name.rstrip('  ')
-                    gs = ningxue.getGroup(msg.to)
+                    gs = austin.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        ningxue.sendText(msg.to,"Not found")
+                        austin.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
                                 del wait["blacklist"][target]
                                 f=codecs.open('st2__b.json','w','utf-8')
                                 json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                ningxue.sendText(msg.to,"成功解除")
+                                austin.sendText(msg.to,"成功解除")
                             except:
-                                ningxue.sendText(msg.to,"成功解除")
+                                austin.sendText(msg.to,"成功解除")
                                 
                                 
             elif msg.text.lower() == 'clear ban':
                 if msg.from_ in admin:
                     wait["blacklist"] = {}
-                    ningxue.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉成功解除所有黑名單❉ ┐") 
+                    austin.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉成功解除所有黑名單❉ ┐") 
 
  
             elif msg.text in ["Kill ban"]:
 		if msg.from_ in admin:
                     if msg.toType == 2:
-                        group = ningxue.getGroup(msg.to)
+                        group = austin.getGroup(msg.to)
                         gMembMids = [contact.mid for contact in group.members]
                         matched_list = []
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            ningxue.sendText(msg.to,"沒有黑名單用戶")
+                            austin.sendText(msg.to,"沒有黑名單用戶")
                             return
                         for jj in matched_list:
-                            ningxue.kickoutFromGroup(msg.to,[jj])
-                        ningxue.sendText(msg.to,"黑名單用戶將被踢除")
+                            austin.kickoutFromGroup(msg.to,[jj])
+                        austin.sendText(msg.to,"黑名單用戶將被踢除")
 		else:
-		    ningxue.sendText(msg.to, "只限創作者")
+		    austin.sendText(msg.to, "只限創作者")
  
             elif msg.text in ["Kill"]:
                     if msg.toType == 2:
                       if msg.from_ in admin:
-                        group = ningxue.getGroup(msg.to)
+                        group = austin.getGroup(msg.to)
                         gMembMids = [contact.mid for contact in group.members]
                         matched_list = []
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            ningxue.sendText(msg.to,"幹你娘")
+                            austin.sendText(msg.to,"幹你娘")
                             return
                         for jj in matched_list:
                             try:
-                                ningxue.kickoutFromGroup(msg.to,[jj])
+                                austin.kickoutFromGroup(msg.to,[jj])
                                 print (msg.to,[jj])
                             except:
                                 pass
@@ -2544,32 +2544,32 @@ def bot(op):
                      if msg.toType == 2:
                         print "Kick all member"
                         _name = msg.text.replace("Kickall","")
-                        gs = ningxue.getGroup(msg.to)
-                        ningxue.sendText(msg.to,"凝雪幻滅開始~~~~")
+                        gs = austin.getGroup(msg.to)
+                        austin.sendText(msg.to,"凝雪幻滅開始~~~~")
                         targets = []
                         for g in gs.members:
                             if _name in g.displayName:
                                 targets.append(g.mid)
                         if targets == []:
-                            ningxue.sendText(msg.to,"Not found.")
+                            austin.sendText(msg.to,"Not found.")
                         else:
                             for target in targets:
 				if target not in admin:
                                     try:
-                                        ningxue.kickoutFromGroup(msg.to,[target])
+                                        austin.kickoutFromGroup(msg.to,[target])
                                         print (msg.to,[g.mid])
                                     except Exception as e:
-                                        ningxue.sendText(msg.to,str(e))
-			    ningxue.inviteIntoGroup(msg.to, targets)
+                                        austin.sendText(msg.to,str(e))
+			    austin.inviteIntoGroup(msg.to, targets)
  
 
 	    elif msg.text in ["Bot restart","Reboot"]:
 		if msg.from_ in Creator:
-		    ningxue.sendText(msg.to, "機器人已重啟...")
+		    austin.sendText(msg.to, "機器人已重啟...")
 		    restart_program()
 		    print "@Restart"
 		else:
-		    ningxue.sendText(msg.to, "No Access")
+		    austin.sendText(msg.to, "No Access")
 		    
             elif msg.text in ["Turn off"]: 
 	        if msg.from_ in Creator:                
@@ -2583,36 +2583,36 @@ def bot(op):
             elif 'Crash' in msg.text:
               if msg.from_ in Creator:
                 msg.contentType = 13
-                msg.contentMetadata = {'mid': "ningxue,'"}
-                ningxue.sendMessage(msg)
+                msg.contentMetadata = {'mid': "austin,'"}
+                austin.sendMessage(msg)
 
  
             elif "copy @" in msg.text:
                    print "[COPY] Ok"
                    _name = msg.text.replace("copy @","")
                    _nametarget = _name.rstrip('  ')
-                   gs = ningxue.getGroup(msg.to)
+                   gs = austin.getGroup(msg.to)
                    targets = []
                    for g in gs.members:
                        if _nametarget == g.displayName:
                            targets.append(g.mid)
                    if targets == []:
-                       ningxue.sendText(msg.to, "Not Found...")
+                       austin.sendText(msg.to, "Not Found...")
                    else:
                        for target in targets:
                             try:
-                               ningxue.CloneContactProfile(target)
-                               ningxue.sendText(msg.to, "已複製 (^_^)")
+                               austin.CloneContactProfile(target)
+                               austin.sendText(msg.to, "已複製 (^_^)")
                             except Exception as e:
                                 print e
 
             elif msg.text in ["Mybackup"]:
                 try:
-                    ningxue.updateDisplayPicture(backup1.pictureStatus)
-                    ningxue.updateProfile(backup1)
-                    ningxue.sendText(msg.to, "完成 (^_^)")
+                    austin.updateDisplayPicture(backup1.pictureStatus)
+                    austin.updateProfile(backup1)
+                    austin.sendText(msg.to, "完成 (^_^)")
                 except Exception as e:
-                    ningxue.sendText(msg.to, str(e))
+                    austin.sendText(msg.to, str(e))
 
  
 	    elif "musik " in msg.text:
@@ -2623,10 +2623,10 @@ def bot(op):
 					data = json.loads(data)
 					for song in data:
 						abc = song[3].replace('https://','http://')
-						ningxue.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
-						ningxue.sendText(msg.to, "Lagu " + song[0] + "\n運行中... 請稍侯 ^_^ ")
-						ningxue.sendAudioWithURL(msg.to,abc)
-						ningxue.sendText(msg.to, "請聆聽歌曲 " + song[0])
+						austin.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
+						austin.sendText(msg.to, "Lagu " + song[0] + "\n運行中... 請稍侯 ^_^ ")
+						austin.sendAudioWithURL(msg.to,abc)
+						austin.sendText(msg.to, "請聆聽歌曲 " + song[0])
 	
             elif 'lirik ' in msg.text.lower():
                 try:
@@ -2640,9 +2640,9 @@ def bot(op):
                         hasil += song[0]
                         hasil += ')\n\n'
                         hasil += song[5]
-                        ningxue.sendText(msg.to, hasil)
+                        austin.sendText(msg.to, hasil)
                 except Exception as wak:
-                        ningxue.sendText(msg.to, str(wak))
+                        austin.sendText(msg.to, str(wak))
                         
 	    elif "musrik " in msg.text:
 					songname = msg.text.replace("musrik ","")
@@ -2656,16 +2656,16 @@ def bot(op):
 						hasil += song[0]
 						hasil += ')\n\n'
 						hasil += song[5]
-						ningxue.sendText(msg.to, "Lagu " + song[0] + "\n運行中... 請稍侯 ^_^ ")
-						ningxue.sendAudioWithURL(msg.to,abc)
-						ningxue.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4] +"\n\n" + hasil)
-						ningxue.sendText(msg.to, "請聆聽歌曲 " + song[0])
+						austin.sendText(msg.to, "Lagu " + song[0] + "\n運行中... 請稍侯 ^_^ ")
+						austin.sendAudioWithURL(msg.to,abc)
+						austin.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4] +"\n\n" + hasil)
+						austin.sendText(msg.to, "請聆聽歌曲 " + song[0])
              
             
             
             elif "Fancytext " in msg.text:
                     txt = msg.text.replace("Fancytext ", "")
-                    ningxue.kedapkedip(msg.to,txt)
+                    austin.kedapkedip(msg.to,txt)
                     print "[Command] Kedapkedip"
 
 
@@ -2673,119 +2673,119 @@ def bot(op):
                 if msg.toType == 2:
                     cover = msg.text.replace("cover @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = ningxue.getGroup(msg.to)
+                    gs = austin.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        ningxue.sendText(msg.to,"Not found")
+                        austin.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = ningxue.channel.getHome(target)
+                                h = austin.channel.getHome(target)
                                 objId = h["result"]["homeInfo"]["objectId"]
-                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
+                                austin.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
                             except Exception as error:
                                 print error
-                                ningxue.sendText(msg.to,"Upload image failed.")
+                                austin.sendText(msg.to,"Upload image failed.")
 
             elif "Cover @" in msg.text:
                 if msg.toType == 2:
                     cover = msg.text.replace("Cover @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = ningxue.getGroup(msg.to)
+                    gs = austin.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        ningxue.sendText(msg.to,"Not found")
+                        austin.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = ningxue.channel.getHome(target)
+                                h = austin.channel.getHome(target)
                                 objId = h["result"]["homeInfo"]["objectId"]
-                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
+                                austin.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
                             except Exception as error:
                                 print error
-                                ningxue.sendText(msg.to,"Upload image failed.")
+                                austin.sendText(msg.to,"Upload image failed.")
                                 
             elif "Cpp" in msg.text:
                 if msg.from_ in admin:
-                    path = "ningxue.jpg"
-                    ningxue.sendText(msg.to,"Update PP :")
-                    ningxue.sendImage(msg.to,path)
-                    ningxue.updateProfilePicture(path)                                
+                    path = "austin.jpg"
+                    austin.sendText(msg.to,"Update PP :")
+                    austin.sendImage(msg.to,path)
+                    austin.updateProfilePicture(path)                                
                                 
                                 
             elif "pp @" in msg.text:
                 if msg.toType == 2:
                     cover = msg.text.replace("pp @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = ningxue.getGroup(msg.to)
+                    gs = austin.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        ningxue.sendText(msg.to,"Not found")
+                        austin.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = ningxue.getContact(target)
-                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
+                                h = austin.getContact(target)
+                                austin.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
                             except Exception as error:
                                 print error
-                                ningxue.sendText(msg.to,"Upload image failed.")
+                                austin.sendText(msg.to,"Upload image failed.")
 
             elif "Pp @" in msg.text:
                 if msg.toType == 2:
                     cover = msg.text.replace("Pp @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = ningxue.getGroup(msg.to)
+                    gs = austin.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        ningxue.sendText(msg.to,"Not found")
+                        austin.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = ningxue.getContact(target)
-                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
+                                h = austin.getContact(target)
+                                austin.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
                             except Exception as error:
                                 print error
-                                ningxue.sendText(msg.to,"Upload image failed.")
+                                austin.sendText(msg.to,"Upload image failed.")
 
             elif msg.text.lower() in ["pap owner","pap creator"]:
                                 link = ["http://dl.profile.line-cdn.net/0hFR-rB8h-GX0QCzWZMOZmKixOFxBnJR81aG9eSTUNREhtOVYqJWgFSWYDR05vOwp7K2sCGTELRUVo"]
                                 pilih = random.choice(link)
-                                ningxue.sendImageWithURL(msg.to,pilih)
+                                austin.sendImageWithURL(msg.to,pilih)
 
  
             elif "Spam: " in msg.text:
                   bctxt = msg.text.replace("Spam: ", "")
                   t = 10
                   while(t):
-                    ningxue.sendText(msg.to, (bctxt))
+                    austin.sendText(msg.to, (bctxt))
                     t-=1
 
             elif "Scbc " in msg.text:
                   bctxt = msg.text.replace("Scbc ", "")
-                  orang = ningxue.getAllContactIds()
+                  orang = austin.getAllContactIds()
                   t = 20
                   for manusia in orang:
                     while(t):
-                      ningxue.sendText(manusia, (bctxt))
+                      austin.sendText(manusia, (bctxt))
                       t-=1
 
             elif "Cbc " in msg.text:
                   broadcasttxt = msg.text.replace("Cbc ", "") 
-                  orang = ningxue.getAllContactIds()
+                  orang = austin.getAllContactIds()
                   for manusia in orang:
-                    ningxue.sendText(manusia, (broadcasttxt))
+                    austin.sendText(manusia, (broadcasttxt))
 
  
             elif 'ig ' in msg.text.lower():
@@ -2806,10 +2806,10 @@ def bot(op):
                     link = "Link: " + "https://www.instagram.com/" + instagram
                     detail = "========INSTAGRAM INFO ========\n"
                     details = "\n========INSTAGRAM INFO ========"
-                    ningxue.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
-                    ningxue.sendImageWithURL(msg.to, tj)
+                    austin.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
+                    austin.sendImageWithURL(msg.to, tj)
                 except Exception as njer:
-                	ningxue.sendText(msg.to, str(njer))
+                	austin.sendText(msg.to, str(njer))
                 	
                 	
             elif "Checkig " in msg.text:
@@ -2834,10 +2834,10 @@ def bot(op):
                                 r = x.get(page)
                                 url = re.search(r'"video_url": "([^"]+)"', r.text).group(1)
                                 print(url)
-                                ningxue.sendVideoWithURL(msg.to,url)
+                                austin.sendVideoWithURL(msg.to,url)
                             else:
                                 print (node['display_src'])
-                                ningxue.sendImageWithURL(msg.to,node['display_src'])
+                                austin.sendImageWithURL(msg.to,node['display_src'])
                         end_cursor = re.search(r'"end_cursor": "([^"]+)"', r.text).group(1)                	
 
 
@@ -2850,9 +2850,9 @@ def bot(op):
                     html = response.read()
                     soup = BeautifulSoup(html, "html.parser")
                     results = soup.find(attrs={'class':'yt-uix-tile-link'})
-                    ningxue.sendText(msg.to,'https://www.youtube.com' + results['href'])
+                    austin.sendText(msg.to,'https://www.youtube.com' + results['href'])
                 except:
-                    ningxue.sendText(msg.to,"Could not find it")
+                    austin.sendText(msg.to,"Could not find it")
                     
                     
             elif 'Youtubevideo ' in msg.text:
@@ -2864,9 +2864,9 @@ def bot(op):
                         html = response.read()
                         soup = BeautifulSoup(html, "html.parser")
                         results = soup.find(attrs={'class': 'yt-uix-tile-link'})
-                        ningxue.sendVideoWithURL(msg.to,'https://www.youtube.com' + results['href'])
+                        austin.sendVideoWithURL(msg.to,'https://www.youtube.com' + results['href'])
                     except:
-                        ningxue.sendText(msg.to, "Could not find it")                    
+                        austin.sendText(msg.to, "Could not find it")                    
 
  
             elif "Say " in msg.text:
@@ -2874,29 +2874,29 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
 
             elif "Say-en " in msg.text:
                 say = msg.text.replace("Say-en ","")
                 lang = 'en'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
 
             elif "Say-jp " in msg.text:
                 say = msg.text.replace("Say-jp ","")
                 lang = 'ja'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
 
             elif "Say welcome" in msg.text:
-                gs = ningxue.getGroup(msg.to)
+                gs = austin.getGroup(msg.to)
                 say = msg.text.replace("Say welcome","Selamat Datang Di "+ gs.name)
                 lang = 'id'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
                 
             elif "lurk on" == msg.text.lower():
                #if msg.from_ in admin:
@@ -2913,7 +2913,7 @@ def bot(op):
                         wait2['ROM'][msg.to] = {}
                         with open('sider.json', 'w') as fp:
                          json.dump(wait2, fp, sort_keys=True, indent=4)
-                         ningxue.sendText(msg.to,"Lurking already on")
+                         austin.sendText(msg.to,"Lurking already on")
                 else:
                     try:
                             del wait2['readPoint'][msg.to]
@@ -2927,14 +2927,14 @@ def bot(op):
                     wait2['ROM'][msg.to] = {}
                     with open('sider.json', 'w') as fp:
                      json.dump(wait2, fp, sort_keys=True, indent=4)
-                     ningxue.sendText(msg.to, "Set the lastseens' point (｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
+                     austin.sendText(msg.to, "Set the lastseens' point (｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
                      print wait2
 
 
             elif "lurk off" == msg.text.lower():
                #if msg.from_ in admin:
                 if msg.to not in wait2['readPoint']:
-                    ningxue.sendText(msg.to,"Lurking already off")
+                    austin.sendText(msg.to,"Lurking already off")
                 else:
                     try:
                             del wait2['readPoint'][msg.to]
@@ -2942,7 +2942,7 @@ def bot(op):
                             del wait2['setTime'][msg.to]
                     except:
                           pass
-                    ningxue.sendText(msg.to, "Delete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
+                    austin.sendText(msg.to, "Delete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
 
 
 
@@ -2951,13 +2951,13 @@ def bot(op):
             	#if msg.from_ in admin:
                     if msg.to in wait2['readPoint']:
                         if wait2["ROM"][msg.to].items() == []:
-                             ningxue.sendText(msg.to, "Lurkers:\nNone")
+                             austin.sendText(msg.to, "Lurkers:\nNone")
                         else:
                             chiya = []
                             for rom in wait2["ROM"][msg.to].items():
                                 chiya.append(rom[1])
                                
-                            cmem = ningxue.getContacts(chiya)
+                            cmem = austin.getContacts(chiya)
                             zx = ""
                             zxc = ""
                             zx2 = []
@@ -2979,36 +2979,36 @@ def bot(op):
                         print lol
                         msg.contentMetadata = lol
                         try:
-                          ningxue.sendMessage(msg)
-                          ningxue.sendText(msg.to, "Jika sudah lihat sider please\ntulis lurk on lagi kak  (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
+                          austin.sendMessage(msg)
+                          austin.sendText(msg.to, "Jika sudah lihat sider please\ntulis lurk on lagi kak  (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
                         except Exception as error:
                               print error
                         pass
                
                     else:
-                        ningxue.sendText(msg.to, "Lurking has not been set (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))    
+                        austin.sendText(msg.to, "Lurking has not been set (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))    
 
 
             elif msg.text.lower() in ["hi","hai","halo","hallo"]:
-                    beb = "Hi Sayang 😘 " +ningxue.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
-                    ningxue.sendText(msg.to,beb)
+                    beb = "Hi Sayang 😘 " +austin.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                    austin.sendText(msg.to,beb)
 
 
 
             elif "playstore " in msg.text.lower():
                 tob = msg.text.lower().replace("playstore ","")
-                ningxue.sendText(msg.to,"Sedang Mencari...")
-                ningxue.sendText(msg.to,"Title : "+tob+"\nSource : Google Play\nLink : https://play.google.com/store/search?q=" + tob)
-                ningxue.sendText(msg.to,"鏈接成功 (^_^)")
+                austin.sendText(msg.to,"Sedang Mencari...")
+                austin.sendText(msg.to,"Title : "+tob+"\nSource : Google Play\nLink : https://play.google.com/store/search?q=" + tob)
+                austin.sendText(msg.to,"鏈接成功 (^_^)")
 
 
             elif "Mid @" in msg.text:
                 _name = msg.text.replace("Mid @","")
                 _nametarget = _name.rstrip(' ')
-                gs = ningxue.getGroup(msg.to)
+                gs = austin.getGroup(msg.to)
                 for g in gs.members:
                     if _nametarget == g.displayName:
-                        ningxue.sendText(msg.to, g.mid)
+                        austin.sendText(msg.to, g.mid)
                     else:
                         pass
 
@@ -3016,30 +3016,30 @@ def bot(op):
             elif "Mybio " in msg.text:
                     string = msg.text.replace("Mybio ","")
                     if len(string.decode('utf-8')) <= 500:
-                        profile = ningxue.getProfile()
+                        profile = austin.getProfile()
                         profile.statusMessage = string
-                        ningxue.updateProfile(profile)
-                        ningxue.sendText(msg.to,"Done")
+                        austin.updateProfile(profile)
+                        austin.sendText(msg.to,"Done")
 
             elif "Myname " in msg.text:
 		if msg.from_ in Creator:
                     string = msg.text.replace("Myname ","")
                     if len(string.decode('utf-8')) <= 5000:
-                        profile = ningxue.getProfile()
+                        profile = austin.getProfile()
                         profile.displayName = string
-                        ningxue.updateProfile(profile)
-                        ningxue.sendText(msg.to,"Done")
+                        austin.updateProfile(profile)
+                        austin.sendText(msg.to,"Done")
 
 
 
             elif msg.text.lower() in ["mymid","myid"]:
-                middd = "Name : " +ningxue.getContact(msg.from_).displayName + "\nMid : " +msg.from_
-                ningxue.sendText(msg.to,middd)
+                middd = "Name : " +austin.getContact(msg.from_).displayName + "\nMid : " +msg.from_
+                austin.sendText(msg.to,middd)
 
             elif msg.text.lower() in ["me"]:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': msg.from_}
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif "apakah " in msg.text:
                 apk = msg.text.replace("apakah ","")
@@ -3048,7 +3048,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
                 
             elif "hari " in msg.text:
                 apk = msg.text.replace("hari ","")
@@ -3057,7 +3057,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")   
+                austin.sendAudio(msg.to,"hasil.mp3")   
 
 
             elif "berapa " in msg.text:
@@ -3067,7 +3067,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
                 
             elif "berapakah " in msg.text:
                 apk = msg.text.replace("berapakah ","")
@@ -3076,7 +3076,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")                
+                austin.sendAudio(msg.to,"hasil.mp3")                
 
             elif "kapan " in msg.text:
                 apk = msg.text.replace("kapan ","")
@@ -3085,18 +3085,18 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ningxue.sendAudio(msg.to,"hasil.mp3")
+                austin.sendAudio(msg.to,"hasil.mp3")
 
  
             elif msg.text in ["Simisimi on","Simisimi:on"]:
                 settings["simiSimi"][msg.to] = True
                 wait["Simi"] = True
-                ningxue.sendText(msg.to," Simisimi Di Aktifkan")
+                austin.sendText(msg.to," Simisimi Di Aktifkan")
                 
             elif msg.text in ["Simisimi off","Simisimi:off"]:
                 settings["simiSimi"][msg.to] = False
                 wait["Simi"] = False
-                ningxue.sendText(msg.to,"Simisimi Di Nonaktifkan")
+                austin.sendText(msg.to,"Simisimi Di Nonaktifkan")
 
  
             elif "Image " in msg.text:
@@ -3108,7 +3108,7 @@ def bot(op):
                 path = random.choice(items)
                 print path
                 try:
-                    ningxue.sendImageWithURL(msg.to,path)
+                    austin.sendImageWithURL(msg.to,path)
                 except:
                     pass
  
@@ -3124,7 +3124,7 @@ def bot(op):
                         for a in soup.select('.yt-lockup-title > a[title]'):
                             if '&list=' not in a['href']:
                                 hasil += ''.join((a['title'],'\nUrl : http://www.youtube.com' + a['href'],'\n\n'))
-                        ningxue.sendText(msg.to,hasil)
+                        austin.sendText(msg.to,hasil)
                         print '[Command] Youtube Search'
 
 
@@ -3135,7 +3135,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='id')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ningxue.sendText(msg.to, A)
+                austin.sendText(msg.to, A)
 
             elif "Tr-en " in msg.text:
                 isi = msg.text.replace("Tr-en ","")
@@ -3143,7 +3143,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='en')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ningxue.sendText(msg.to, A)
+                austin.sendText(msg.to, A)
                 
             elif "Tr-th " in msg.text:
                 isi = msg.text.replace("Tr-th ","")
@@ -3151,7 +3151,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='th')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ningxue.sendText(msg.to, A)                
+                austin.sendText(msg.to, A)                
 
             
             elif "Id@en" in msg.text:
@@ -3165,7 +3165,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ningxue.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke Inggris----\n" + "" + result)
+                austin.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke Inggris----\n" + "" + result)
 
 
             elif "En@id" in msg.text:
@@ -3179,7 +3179,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ningxue.sendText(msg.to,"----Dari Inggris----\n" + "" + kata + "\n\n----Ke Indonesia----\n" + "" + result)
+                austin.sendText(msg.to,"----Dari Inggris----\n" + "" + kata + "\n\n----Ke Indonesia----\n" + "" + result)
                 
             
             elif "Id@th" in msg.text:
@@ -3193,7 +3193,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ningxue.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke Thailand----\n" + "" + result)
+                austin.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke Thailand----\n" + "" + result)
                 
             
             elif "Th@id" in msg.text:
@@ -3207,29 +3207,29 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ningxue.sendText(msg.to,"----Dari Thailand----\n" + "" + kata + "\n\n----Ke Indonesia----\n" + "" + result)                
+                austin.sendText(msg.to,"----Dari Thailand----\n" + "" + kata + "\n\n----Ke Indonesia----\n" + "" + result)                
  
             elif msg.text in ["Friendlist"]:    
-                contactlist = ningxue.getAllContactIds()
-                kontak = ningxue.getContacts(contactlist)
+                contactlist = austin.getAllContactIds()
+                kontak = austin.getContacts(contactlist)
                 num=1
                 msgs="═════════List Friend═════════"
                 for ids in kontak:
                     msgs+="\n[%i] %s" % (num, ids.displayName)
                     num=(num+1)
                 msgs+="\n═════════List Friend═════════\n\nTotal Friend : %i" % len(kontak)
-                ningxue.sendText(msg.to, msgs)
+                austin.sendText(msg.to, msgs)
 
             elif msg.text in ["Memlist"]:   
-                kontak = ningxue.getGroup(msg.to)
+                kontak = austin.getGroup(msg.to)
                 group = kontak.members
                 num=1
-                msgs="═════════List Member═�����═══════-"
+                msgs="═════════List Member═     ═══════-"
                 for ids in group:
                     msgs+="\n[%i] %s" % (num, ids.displayName)
                     num=(num+1)
                 msgs+="\n═════════List Member═════════\n\nTotal Members : %i" % len(group)
-                ningxue.sendText(msg.to, msgs)
+                austin.sendText(msg.to, msgs)
 
             
 
@@ -3238,58 +3238,58 @@ def bot(op):
                 print "[Command]dp executing"
                 _name = msg.text.replace("Getvid @","")
                 _nametarget = _name.rstrip('  ')
-                gs = ningxue.getGroup(msg.to)
+                gs = austin.getGroup(msg.to)
                 targets = []
                 for g in gs.members:
                     if _nametarget == g.displayName:
                         targets.append(g.mid)
                 if targets == []:
-                    ningxue.sendText(msg.to,"Contact not found")
+                    austin.sendText(msg.to,"Contact not found")
                 else:
                     for target in targets:
                         try:
-                            contact = ningxue.getContact(target)
+                            contact = austin.getContact(target)
                             path = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                            ningxue.sendVideoWithURL(msg.to, path)
+                            austin.sendVideoWithURL(msg.to, path)
                         except Exception as e:
                             raise e
                 print "[Command]dp executed"
 
 
             elif "Getgroup image" in msg.text:
-                group = ningxue.getGroup(msg.to)
+                group = austin.getGroup(msg.to)
                 path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
-                ningxue.sendImageWithURL(msg.to,path)
+                austin.sendImageWithURL(msg.to,path)
 
             elif "Urlgroup image" in msg.text:
-                group = ningxue.getGroup(msg.to)
+                group = austin.getGroup(msg.to)
                 path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
-                ningxue.sendText(msg.to,path)
+                austin.sendText(msg.to,path)
  
             elif "Name" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
-                contact = ningxue.getContact(key1)
-                cu = ningxue.channel.getCover(key1)
+                contact = austin.getContact(key1)
+                cu = austin.channel.getCover(key1)
                 try:
-                    ningxue.sendText(msg.to, "===[DisplayName]===\n" + contact.displayName)
+                    austin.sendText(msg.to, "===[DisplayName]===\n" + contact.displayName)
                 except:
-                    ningxue.sendText(msg.to, "===[DisplayName]===\n" + contact.displayName)
+                    austin.sendText(msg.to, "===[DisplayName]===\n" + contact.displayName)
 
 
             elif "Profile" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
-                contact = ningxue.getContact(key1)
-                cu = ningxue.channel.getCover(key1)
+                contact = austin.getContact(key1)
+                cu = austin.channel.getCover(key1)
                 path = str(cu)
                 image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
                 try:
-                    ningxue.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nBio :\n" + contact.statusMessage)
-                    ningxue.sendText(msg.to,"Profile Picture " + contact.displayName)
-                    ningxue.sendImageWithURL(msg.to,image)
-                    ningxue.sendText(msg.to,"Cover " + contact.displayName)
-                    ningxue.sendImageWithURL(msg.to,path)
+                    austin.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nBio :\n" + contact.statusMessage)
+                    austin.sendText(msg.to,"Profile Picture " + contact.displayName)
+                    austin.sendImageWithURL(msg.to,image)
+                    austin.sendText(msg.to,"Cover " + contact.displayName)
+                    austin.sendImageWithURL(msg.to,path)
                 except:
                     pass
 
@@ -3297,37 +3297,37 @@ def bot(op):
             elif "Contact" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]                
-                mmid = ningxue.getContact(key1)
+                mmid = austin.getContact(key1)
                 msg.contentType = 13
                 msg.contentMetadata = {"mid": key1}
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
 
             elif "Info" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
-                contact = ningxue.getContact(key1)
-                cu = ningxue.channel.getCover(key1)
+                contact = austin.getContact(key1)
+                cu = austin.channel.getCover(key1)
                 try:
-                    ningxue.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + contact.mid + "\n\nBio :\n" + contact.statusMessage + "\n\nProfile Picture :\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nHeader :\n" + str(cu))
+                    austin.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + contact.mid + "\n\nBio :\n" + contact.statusMessage + "\n\nProfile Picture :\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nHeader :\n" + str(cu))
                 except:
-                    ningxue.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + contact.mid + "\n\nBio :\n" + contact.statusMessage + "\n\nProfile Picture :\n" + str(cu))
+                    austin.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + contact.mid + "\n\nBio :\n" + contact.statusMessage + "\n\nProfile Picture :\n" + str(cu))
 
 
             elif "Bio" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
-                contact = ningxue.getContact(key1)
-                cu = ningxue.channel.getCover(key1)
+                contact = austin.getContact(key1)
+                cu = austin.channel.getCover(key1)
                 try:
-                    ningxue.sendText(msg.to, "===[StatusMessage]===\n" + contact.statusMessage)
+                    austin.sendText(msg.to, "===[StatusMessage]===\n" + contact.statusMessage)
                 except:
-                    ningxue.sendText(msg.to, "===[StatusMessage]===\n" + contact.statusMessage)
+                    austin.sendText(msg.to, "===[StatusMessage]===\n" + contact.statusMessage)
 
 
             elif msg.text.lower() == 'runtime':
                 eltime = time.time() - mulai
                 van = "Bot Sudah Berjalan Selama :\n"+waktu(eltime)
-                ningxue.sendText(msg.to,van)
+                austin.sendText(msg.to,van)
                 
                  
             elif "Checkdate " in msg.text:
@@ -3339,7 +3339,7 @@ def bot(op):
                 usia = data["data"]["usia"]
                 ultah = data["data"]["ultah"]
                 zodiak = data["data"]["zodiak"]
-                ningxue.sendText(msg.to,"========== I N F O R M A S I ==========\n"+"Date Of Birth : "+lahir+"\nAge : "+usia+"\nUltah : "+ultah+"\nZodiak : "+zodiak+"\n========== I N F O R M A S I ==========")
+                austin.sendText(msg.to,"========== I N F O R M A S I ==========\n"+"Date Of Birth : "+lahir+"\nAge : "+usia+"\nUltah : "+ultah+"\nZodiak : "+zodiak+"\n========== I N F O R M A S I ==========")
                 
    
             elif msg.text in ["Kalender","Time","Waktu"]:
@@ -3356,85 +3356,85 @@ def bot(op):
                 for k in range(0, len(bulan)):
                     if bln == str(k): bln = bulan[k-1]
                 rst = hasil + ", " + inihari.strftime('%d') + " - " + bln + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
-                ningxue.sendText(msg.to, rst)                
+                austin.sendText(msg.to, rst)                
                  
                 
             elif "SearchID " in msg.text:
                 userid = msg.text.replace("SearchID ","")
-                contact = ningxue.findContactsByUserid(userid)
+                contact = austin.findContactsByUserid(userid)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': contact.mid}
-                ningxue.sendMessage(msg)
+                austin.sendMessage(msg)
                 
             elif "Searchid " in msg.text:
                 userid = msg.text.replace("Searchid ","")
-                contact = ningxue.findContactsByUserid(userid)
+                contact = austin.findContactsByUserid(userid)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': contact.mid}
-                ningxue.sendMessage(msg)       
+                austin.sendMessage(msg)       
                 
                 
             elif "removechat" in msg.text.lower():
                 if msg.from_ in admin:
                     try:
-                        ningxue.removeAllMessages(op.param2)
+                        austin.removeAllMessages(op.param2)
                         print "[Command] Remove Chat"
-                        ningxue.sendText(msg.to,"Done")
+                        austin.sendText(msg.to,"Done")
                     except Exception as error:
                         print error
-                        ningxue.sendText(msg.to,"Error")      
+                        austin.sendText(msg.to,"Error")      
                         
                         
             elif "Invitemeto " in msg.text:
                 if msg.from_ in admin:
                     gid = msg.text.replace("Invitemeto ","")
                     if gid == "":
-                        ningxue.sendText(msg.to,"Invalid group id")
+                        austin.sendText(msg.to,"Invalid group id")
                     else:
                         try:
-                            ningxue.findAndAddContactsByMid(msg.from_)
-                            ningxue.inviteIntoGroup(gid,[msg.from_])
+                            austin.findAndAddContactsByMid(msg.from_)
+                            austin.inviteIntoGroup(gid,[msg.from_])
                         except:
-                            ningxue.sendText(msg.to,"Mungkin Saya Tidak Di Dalaam Grup Itu")
+                            austin.sendText(msg.to,"Mungkin Saya Tidak Di Dalaam Grup Itu")
 
 
             elif msg.text in ["Glist"]:
-                ningxue.sendText(msg.to, "Tunggu Sebentar. . .")                    
-                gid = ningxue.getGroupIdsJoined()
+                austin.sendText(msg.to, "Tunggu Sebentar. . .")                    
+                gid = austin.getGroupIdsJoined()
                 h = ""
                 for i in gid:
-                    h += "╠➩" + "%s\n" % (ningxue.getGroup(i).name +" ~> ["+str(len(ningxue.getGroup(i).members))+"]")
-                ningxue.sendText(msg.to,"╔═════════════════════════\n║          ☆☞ LIST GROUPS☜☆\n╠═════════════════════════\n" + h + "╠═════════════════════════" + "\n║ Total Groups =" +" ["+str(len(gid))+"]\n╚═════════════════════════")
+                    h += "╠➩" + "%s\n" % (austin.getGroup(i).name +" ~> ["+str(len(austin.getGroup(i).members))+"]")
+                austin.sendText(msg.to,"╔═════════════════════════\n║          ☆☞ LIST GROUPS☜☆\n╠═════════════════════════\n" + h + "╠═════════════════════════" + "\n║ Total Groups =" +" ["+str(len(gid))+"]\n╚═════════════════════════")
 
             elif msg.text in ["Glistmid"]:   
-                gruplist = ningxue.getGroupIdsJoined()
-                kontak = ningxue.getGroups(gruplist)
+                gruplist = austin.getGroupIdsJoined()
+                kontak = austin.getGroups(gruplist)
                 num=1
                 msgs="═════════List GrupMid═════════"
                 for ids in kontak:
                     msgs+="\n[%i] %s" % (num, ids.id)
                     num=(num+1)
                 msgs+="\n═════════List GrupMid═════════\n\nTotal Grup : %i" % len(kontak)
-                ningxue.sendText(msg.to, msgs)
+                austin.sendText(msg.to, msgs)
 
 
 
             elif "Google: " in msg.text:
                     a = msg.text.replace("Google: ","")
                     b = urllib.quote(a)
-                    ningxue.sendText(msg.to,"Sedang Mencari...")
-                    ningxue.sendText(msg.to, "https://www.google.com/" + b)
-                    ningxue.sendText(msg.to,"Itu Dia Linknya. . .")     
+                    austin.sendText(msg.to,"Sedang Mencari...")
+                    austin.sendText(msg.to, "https://www.google.com/" + b)
+                    austin.sendText(msg.to,"Itu Dia Linknya. . .")     
 
 
             elif "Details group: " in msg.text:
                 if msg.from_ in admin:
                     gid = msg.text.replace("Details group: ","")
                     if gid in [""," "]:
-                        ningxue.sendText(msg.to,"Grup id tidak valid")
+                        austin.sendText(msg.to,"Grup id tidak valid")
                     else:
                         try:
-                            groups = ningxue.getGroup(gid)
+                            groups = austin.getGroup(gid)
                             if groups.members is not None:
                                 members = str(len(groups.members))
                             else:
@@ -3444,49 +3444,49 @@ def bot(op):
                             else:
                                 pendings = "0"
                             h = "[" + groups.name + "]\n -+GroupID : " + gid + "\n -+Members : " + members + "\n -+MembersPending : " + pendings + "\n -+Creator : " + groups.creator.displayName + "\n -+GroupPicture : http://dl.profile.line.naver.jp/" + groups.pictureStatus
-                            ningxue.sendText(msg.to,h)
+                            austin.sendText(msg.to,h)
                         except Exception as error:
-                            ningxue.sendText(msg.to,(error))
+                            austin.sendText(msg.to,(error))
             
             elif "Cancel invite: " in msg.text:
                 if msg.from_ in admin:
                     gids = msg.text.replace("Cancel invite: ","")
-                    gid = ningxue.getGroup(gids)
+                    gid = austin.getGroup(gids)
                     for i in gid:
                         if i is not None:
                             try:
-                                ningxue.rejectGroupInvitation(i)
+                                austin.rejectGroupInvitation(i)
                             except:
-                                ningxue.sendText(msg.to,"Error!")
+                                austin.sendText(msg.to,"Error!")
                                 break
                         else:
                             break
                     if gid is not None:
-                        ningxue.sendText(msg.to,"成功拒絕了群組邀請 " + gid.name)
+                        austin.sendText(msg.to,"成功拒絕了群組邀請 " + gid.name)
                     else:
-                        ningxue.sendText(msg.to,"未找到群組")
+                        austin.sendText(msg.to,"未找到群組")
             
             elif msg.text in ["Acc invite"]:
                 if msg.from_ in admin:
-                    gid = ningxue.getGroupIdsInvited()
+                    gid = austin.getGroupIdsInvited()
                     _list = ""
                     for i in gid:
                         if i is not None:
-                            gids = ningxue.getGroup(i)
+                            gids = austin.getGroup(i)
                             _list += gids.name
-                            ningxue.acceptGroupInvitation(i)
+                            austin.acceptGroupInvitation(i)
                         else:
                             break
                     if gid is not None:
-                        ningxue.sendText(msg.to,"成功收到了群組的所有邀請 :\n" + _list)
+                        austin.sendText(msg.to,"成功收到了群組的所有邀請 :\n" + _list)
                     else:
-                        ningxue.sendText(msg.to,"目前沒有待處理的群組")  
+                        austin.sendText(msg.to,"目前沒有待處理的群組")  
 
 
             elif "Gif gore" in msg.text:
             	gif = ("https://media.giphy.com/media/l2JHVsQiOZrNMGzYs/giphy.gif","https://media.giphy.com/media/OgltQ2hbilzJS/200w.gif")
                 gore = random.choice(gif)
-                ningxue.sendGifWithURL(msg.to,gore)
+                austin.sendGifWithURL(msg.to,gore)
                 
 
                 
@@ -3499,10 +3499,10 @@ def bot(op):
                 for target in targets:
                     try:
                         mimic["target"][target] = True
-                        ningxue.sendText(msg.to,"目標已添加!")
+                        austin.sendText(msg.to,"目標已添加!")
                         break
                     except:
-                        ningxue.sendText(msg.to,"Fail !")
+                        austin.sendText(msg.to,"Fail !")
                         break
                     
             elif ("Micdel " in msg.text):
@@ -3514,47 +3514,47 @@ def bot(op):
                 for target in targets:
                     try:
                         del mimic["target"][target]
-                        ningxue.sendText(msg.to,"目標已刪除!")
+                        austin.sendText(msg.to,"目標已刪除!")
                         break
                     except:
-                        ningxue.sendText(msg.to,"Fail !")
+                        austin.sendText(msg.to,"Fail !")
                         break
                     
             elif msg.text in ["Miclist"]:
                         if mimic["target"] == {}:
-                            ningxue.sendText(msg.to,"Nothing")
+                            austin.sendText(msg.to,"Nothing")
                         else:
                             mc = "Target Mimic User:\n"
                             for mi_d in mimic["target"]:
-                                mc += "?? "+ningxue.getContact(mi_d).displayName + "\n"
-                            ningxue.sendText(msg.to,mc)
+                                mc += "?? "+austin.getContact(mi_d).displayName + "\n"
+                            austin.sendText(msg.to,mc)
 
             elif "Mimic target " in msg.text:
                         if mimic["copy"] == True:
                             siapa = msg.text.replace("Mimic target ","")
                             if siapa.rstrip(' ') == "me":
                                 mimic["copy2"] = "me"
-                                ningxue.sendText(msg.to,"Mimic change to me")
+                                austin.sendText(msg.to,"Mimic change to me")
                             elif siapa.rstrip(' ') == "target":
                                 mimic["copy2"] = "target"
-                                ningxue.sendText(msg.to,"Mimic change to target")
+                                austin.sendText(msg.to,"Mimic change to target")
                             else:
-                                ningxue.sendText(msg.to,"I dont know")
+                                austin.sendText(msg.to,"I dont know")
             
             elif "Mimic " in msg.text:
                 cmd = msg.text.replace("Mimic ","")
                 if cmd == "on":
                     if mimic["status"] == False:
                         mimic["status"] = True
-                        ningxue.sendText(msg.to,"Reply Message on")
+                        austin.sendText(msg.to,"Reply Message on")
                     else:
-                        ningxue.sendText(msg.to,"Sudah on")
+                        austin.sendText(msg.to,"Sudah on")
                 elif cmd == "off":
                     if mimic["status"] == True:
                         mimic["status"] = False
-                        ningxue.sendText(msg.to,"Reply Message off")
+                        austin.sendText(msg.to,"Reply Message off")
                     else:
-                        ningxue.sendText(msg.to,"Sudah off")
+                        austin.sendText(msg.to,"Sudah off")
 
 
 
@@ -3568,12 +3568,13 @@ def bot(op):
 
 while True:
     try:
-        Ops = ningxue.fetchOps(ningxue.Poll.rev, 5)
+        Ops = austin.fetchOps(austin.Poll.rev, 5)
     except EOFError:
-        raise Exception("It might be wrong revision\n" + str(ningxue.Poll.rev))
+        raise Exception("It might be wrong revision\n" + str(austin.Poll.rev))
 
     for Op in Ops:
         if (Op.type != OpType.END_OF_OPERATION):
-            ningxue.Poll.rev = max(ningxue.Poll.rev, Op.revision)
+            austin.Poll.rev = max(austin.Poll.rev, Op.revision)
             bot(Op)
-
+		
+		
